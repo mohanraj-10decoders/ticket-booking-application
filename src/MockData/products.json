@@ -1,0 +1,27 @@
+[
+    {
+        "id":1,
+        "name":"Online Flight Booking",
+        "path": "/flights"
+    },
+    {
+        "id":2,
+        "name":"Online Hotel Booking",
+        "path": "/hotels"
+    },
+    {
+        "id":3,
+        "name":"Domestic Airlines",
+        "path": "/flights/domestic"
+    },
+    {
+        "id":1,
+        "name":"Top Airline Routes",
+        "path": "/flights/routes"
+    },
+    {
+        "id":1,
+        "name":"Partner Programs",
+        "path": "/partner/programs"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name":"Indigo",
+        "path": "/airline/Indigo"
+    },
+    {
+        "id":2,
+        "name":"Spicejet",
+        "path": "/airline/Spicejet"
+    },
+    {
+        "id":3,
+        "name":"Air Asia",
+        "path": "/airline/AirAsia"
+    },
+    {
+        "id":4,
+        "name":"Vistara",
+        "path": "/airline/Vistara"
+    },
+    {
+        "id":5,
+        "name":"Air India",
+        "path": "/airline/AirIndia"
+    },
+    {
+        "id":6,
+        "name":"Go First",
+        "path": "/airline/GoFirst"
+    }
+]

@@ -1,0 +1,22 @@
+.header{
+    position: static;
+    top: 0px;
+    width: 100%;
+    /* height: max-content; */
+    background-color: #017959;
+}
+.logo{
+    height: 30px;
+    width: auto;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.main{
+    height: 100vh;
+}
+.navLink{
+    text-decoration: none;
+    color: white !important;
+    font-weight: bold;
+}
