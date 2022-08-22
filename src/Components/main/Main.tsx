@@ -56,7 +56,8 @@ function Header() {
           <div
             className='collapse navbar-collapse'
             id='navbarCollapse1'
-            style={{ display: 'flex', justifyContent: 'flex-end', gap: '30px' }}
+            // style={{ display: 'flex', justifyContent: 'flex-end', gap: '30px' }}
+            style={{ justifyContent: 'flex-end' }}
           >
             <div
               className='navbar-nav'
