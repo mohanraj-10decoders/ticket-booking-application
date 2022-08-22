@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import products from '../../MockData/products.json';
+import airlines from '../../MockData/airLines.json';
+import corporates from '../../MockData/corporates.json';
+import payments from '../../MockData/payments.json';
+import { MockDataPath, MockDataUrl } from '../../MockDataTypes/Types';
 import classes from './Main.module.css';
+import HomeContent from '../HomeContent/HomeContent';
 
 export default function Main() {
+  useEffect(() => {
+    console.log(products);
+  }, []);
   return (
     <div>
       <header className={classes.header}>
         <Header />
       </header>
-      <main className={classes.main}>This is my main component</main>
-      <footer>
+      <main className={classes.main}>
+        <HomeContent />
+      </main>
+      <footer className={classes.footer}>
         <Footer />
       </footer>
     </div>
@@ -120,5 +131,59 @@ function Header() {
 }
 
 function Footer() {
-  return <>This is my footer</>;
+  return (
+    <>
+      <section>
+        <div>
+          <h6 style={{ width: 'max-content' }}>OUR PRODUCTS</h6>
+          <FooterList data={products.data} />
+        </div>
+        <div>
+          <h6 style={{ width: 'max-content' }}>CORPORATE</h6>
+          <FooterList data={corporates.data} />
+        </div>
+        <div>
+          <h6 style={{ width: 'max-content' }}>AirLines</h6>
+          <FooterList data={airlines.data} />
+        </div>
+        <div>
+          <h6 style={{ width: 'max-content' }}>Payments</h6>
+          <FooterList data={payments.data} />
+        </div>
+      </section>
+      <div className={classes.copyRight}>
+        <p>Copyright © 2016-2022 Happyeasygo Group. All rights reserved</p>
+        <p>
+          All brands, logos are trademarks or registered trademarks of their
+          respective owners
+        </p>
+      </div>
+    </>
+  );
 }
+
+function FooterList({ data }: any) {
+  return (
+    <>
+      <ul>
+        {data.map((d: MockDataPath | MockDataUrl, index: any) => (
+          <li key={index}>{d.name}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+// const FooterList: React.FC<MockDataPath[] | MockDataUrl[]> = (
+//   data
+// ): JSX.Element => {
+//   return (
+//     <li>
+//       <ul>
+//         {data.map((d: MockDataPath | MockDataUrl) => (
+//           <li>{d.name}</li>
+//         ))}
+//       </ul>
+//     </li>
+//   );
+// };
