@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';
 import corporates from '../../MockData/corporates.json';
@@ -22,7 +22,7 @@ export default function Main() {
         <Header />
       </header>
       <main className={classes.main}>
-        <HomeContent />
+        <Outlet />
       </main>
       <footer className={classes.footer}>
         <Footer />
