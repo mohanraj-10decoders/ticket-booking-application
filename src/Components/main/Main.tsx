@@ -8,6 +8,10 @@ import { MockDataPath, MockDataUrl } from '../../MockDataTypes/Types';
 import classes from './Main.module.css';
 import HomeContent from '../HomeContent/HomeContent';
 
+interface jsonData {
+  data: MockDataPath[] | MockDataUrl[];
+}
+
 export default function Main() {
   useEffect(() => {
     console.log(products);
@@ -137,19 +141,19 @@ function Footer() {
       <section>
         <div>
           <h6 style={{ width: 'max-content' }}>OUR PRODUCTS</h6>
-          <FooterList data={products.data} />
+          <FooterList {...products} />
         </div>
         <div>
           <h6 style={{ width: 'max-content' }}>CORPORATE</h6>
-          <FooterList data={corporates.data} />
+          <FooterList {...corporates} />
         </div>
         <div>
           <h6 style={{ width: 'max-content' }}>AirLines</h6>
-          <FooterList data={airlines.data} />
+          <FooterList {...airlines} />
         </div>
         <div>
           <h6 style={{ width: 'max-content' }}>Payments</h6>
-          <FooterList data={payments.data} />
+          <FooterList {...payments} />
         </div>
       </section>
       <div className={classes.copyRight}>
@@ -163,7 +167,10 @@ function Footer() {
   );
 }
 
-function FooterList({ data }: any) {
+function FooterList({ data }: jsonData) {
+  console.log('List data', data);
+  // let newData = [...data];
+  // console.log('List newdata', newData);
   return (
     <>
       <ul>
