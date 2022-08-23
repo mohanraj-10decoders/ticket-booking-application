@@ -1,17 +1,17 @@
 export interface MockDataPath {
-  id: Number;
+  id: string;
   name: string;
   path: string;
 }
 
 export interface MockDataUrl {
-  id: Number;
+  id: string;
   name: string;
   imageUrl: string;
 }
 
 export interface CarouselBannerType {
-  id: Number;
+  id: string;
   imageUrl: string;
 }
 
@@ -22,4 +22,10 @@ export interface FlightsCardType {
   from: string;
   to: string;
   price: string;
+}
+
+export interface TravelBlogsCardType {
+  id: string;
+  title: string;
+  imageUrl: string;
 }

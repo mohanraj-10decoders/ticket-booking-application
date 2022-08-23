@@ -1,32 +1,32 @@
 {
     "data":[
     {
-        "id":1,
+        "id":"1",
         "name":"FAQs",
         "path": "/FAQ"
     },
     {
-        "id":2,
+        "id":"2",
         "name":"Terms & Conditions",
         "path": "/termsAndConditions"
     },
     {
-        "id":3,
+        "id":"3",
         "name":"Privacy",
         "path": "privacyPolicy"
     },
     {
-        "id":4,
+        "id":"4",
         "name":"About Us",
         "path": "/aboutUs"
     },
     {
-        "id":5,
+        "id":"5",
         "name":"Contact Us",
         "path": "/contact"
     },
     {
-        "id":6,
+        "id":"6",
         "name":"Careers",
         "path": "/careers"
     }

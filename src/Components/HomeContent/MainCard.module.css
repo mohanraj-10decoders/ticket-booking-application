@@ -12,7 +12,7 @@
     background-color: white;
     padding: 20px;
     margin: 10px 0;
-    max-height: 250px;
+    max-height: 300px;
     overflow-y: auto;
 }
 
@@ -50,4 +50,24 @@
 
 .cardPrice{
     color: red;
+}
+
+.travelCard{
+    width: 300px;
+    box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.travelCard p{
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.travelCardImage{
+    width: 100%;
+    height: auto;
 }

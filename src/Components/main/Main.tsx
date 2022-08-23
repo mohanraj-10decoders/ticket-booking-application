@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';
@@ -167,24 +167,10 @@ function FooterList({ data }: any) {
   return (
     <>
       <ul>
-        {data.map((d: MockDataPath | MockDataUrl, index: any) => (
-          <li key={index}>{d.name}</li>
+        {data.map((d: MockDataPath | MockDataUrl) => (
+          <li key={d.id}>{d.name}</li>
         ))}
       </ul>
     </>
   );
 }
-
-// const FooterList: React.FC<MockDataPath[] | MockDataUrl[]> = (
-//   data
-// ): JSX.Element => {
-//   return (
-//     <li>
-//       <ul>
-//         {data.map((d: MockDataPath | MockDataUrl) => (
-//           <li>{d.name}</li>
-//         ))}
-//       </ul>
-//     </li>
-//   );
-// };

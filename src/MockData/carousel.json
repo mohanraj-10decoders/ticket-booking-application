@@ -1,19 +1,19 @@
 {
     "data":[
         {
-            "id":1,
+            "id":"1",
             "imageUrl":"https://img.happyeasygo.com/oss/ossuploadfile/webmodle/2022/07/12/10170df6c44e40388102ea7ddc75c440.jpg"
         },
         {
-            "id":2,
+            "id":"2",
             "imageUrl":"https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/10/14/a855a1cdd33e44b9b73865bc104aacaf.jpg"
         },
         {
-            "id":3,
+            "id":"3",
             "imageUrl":"https://img.happyeasygo.com/oss/ossuploadfile/advertising/2022/08/13/freedom-sale_1090x168.jpg?x"
         },
         {
-            "id":4,
+            "id":"4",
             "imageUrl":"https://img.happyeasygo.com/oss/ossuploadfile/advertising/2022/08/18/989f5a6e13bd4ec2b0411bb7a1750f07.png"
         }
     ]

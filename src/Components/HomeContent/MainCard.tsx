@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import FlightsData from '../../MockData/flightsCard.json';
-import { FlightsCardType } from '../../MockDataTypes/Types';
+import TravelBlogsData from '../../MockData/travelBlogsCard.json';
+import {
+  FlightsCardType,
+  TravelBlogsCardType,
+} from '../../MockDataTypes/Types';
 import classes from './MainCard.module.css';
 
 export default function MainCard() {
@@ -42,9 +46,9 @@ function FlightsCard() {
     <div className={classes.flightsCards}>
       <h3>Best Flight Deals</h3>
       <section className={classes.flightCards}>
-        {FlightsData.data.map((data: FlightsCardType, index: Number) => {
+        {FlightsData.data.map((data: FlightsCardType) => {
           return (
-            <div className={classes.flightCard}>
+            <div className={classes.flightCard} key={data.id}>
               <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>
               <div className={classes.cities}>
                 <p className={classes.cardFrom}>{data.from}</p>
@@ -62,8 +66,29 @@ function FlightsCard() {
 
 function HotelsCard() {
   return (
-    <div className={classes.flightsCard}>
+    <div className={classes.flightsCards}>
       <h3>Travel Blog</h3>
+      <section className={classes.flightCards}>
+        {TravelBlogsData.data.map((data: TravelBlogsCardType) => {
+          return (
+            <div className={classes.travelCard} key={data.id}>
+              <img
+                className={classes.travelCardImage}
+                src={data.imageUrl}
+                alt='BlogImage'
+              />
+              <p>{data.title}</p>
+              {/* <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>
+              <div className={classes.cities}>
+                <p className={classes.cardFrom}>{data.from}</p>
+                <p className={classes.cardTo}>{data.to}</p>
+              </div>
+              <p className={classes.cardDate}>Starting from</p>
+              <h3 className={classes.cardPrice}>{data.price}</h3> */}
+            </div>
+          );
+        })}
+      </section>
     </div>
   );
 }
