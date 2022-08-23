@@ -1,0 +1,50 @@
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/646839d211c046209d020907cddbde97.jpg');
+}
+
+.content h3 {
+  background-color: #198754;
+  color: white;
+  width: 28%;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.formSection {
+  background-color: rgba(200, 200, 200, 0.5);
+  background-color: white;
+  padding: 20px;
+  width: 28%;
+  min-width: 300px;
+  border-radius: 5px;
+}
+
+.textField {
+  /* background-color: green; */
+  width: 25vw;
+  min-width: 250px;
+  margin: 5px auto;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+footer {
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
