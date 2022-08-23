@@ -4,25 +4,26 @@ import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
 import classes from './Register.module.css';
+import { NavLink } from 'react-router-dom';
 
 export default function Register() {
-  const phoneRegExp = /[2-9]{2}\d{8}/;
+  //   const phoneRegExp = /[2-9]{2}\d{8}/;
   const inputStyles = {
-    height: '50px',
+    height: '40px',
   };
   const valSchema = Yup.object({
-    firstName: Yup.string()
+    name: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
-    lastName: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
-    phone: Yup.string()
-      .matches(phoneRegExp, 'Invalid phone number')
-      .required('Required'),
-    city: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
+    // phone: Yup.string()
+    //   .matches(phoneRegExp, 'Invalid phone number')
+    //   .required('Required'),
+    password: Yup.string().required('Required'),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      'Passwords must match'
+    ),
   });
   return (
     <div className={classes.content}>
@@ -30,12 +31,11 @@ export default function Register() {
       <section className={classes.formSection}>
         <Formik
           initialValues={{
-            firstName: '',
-            lastName: '',
+            name: '',
             email: '',
-            phone: '',
-            city: '',
-            country: '',
+            // phone: '',
+            password: '',
+            confirmPassword: '',
           }}
           validationSchema={valSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -62,17 +62,17 @@ export default function Register() {
                     className: classes.textField,
                     style: inputStyles,
                   }}
-                  id='firstName'
-                  label='First Name'
+                  id='name'
+                  label='Name'
                   variant='filled'
-                  {...formik.getFieldProps('firstName')}
+                  {...formik.getFieldProps('name')}
                 />
-                {formik.touched.firstName && formik.errors.firstName ? (
-                  <div className={classes.error}>{formik.errors.firstName}</div>
+                {formik.touched.name && formik.errors.name ? (
+                  <div className={classes.error}>{formik.errors.name}</div>
                 ) : null}
               </div>
 
-              <div className={classes.input}>
+              {/* <div className={classes.input}>
                 <TextField
                   InputProps={{
                     className: classes.textField,
@@ -86,7 +86,7 @@ export default function Register() {
                 {formik.touched.lastName && formik.errors.lastName ? (
                   <div className={classes.error}>{formik.errors.lastName}</div>
                 ) : null}
-              </div>
+              </div> */}
 
               <div className={classes.input}>
                 <TextField
@@ -104,7 +104,7 @@ export default function Register() {
                 ) : null}
               </div>
 
-              <div className={classes.input}>
+              {/* <div className={classes.input}>
                 <TextField
                   InputProps={{
                     className: classes.textField,
@@ -118,37 +118,42 @@ export default function Register() {
                 {formik.touched.phone && formik.errors.phone ? (
                   <div className={classes.error}>{formik.errors.phone}</div>
                 ) : null}
-              </div>
+              </div> */}
 
               <div className={classes.input}>
                 <TextField
+                  type='password'
                   InputProps={{
                     className: classes.textField,
                     style: inputStyles,
                   }}
-                  id='city'
-                  label='City'
+                  id='password'
+                  label='Password'
                   variant='filled'
-                  {...formik.getFieldProps('city')}
+                  {...formik.getFieldProps('password')}
                 />
-                {formik.touched.city && formik.errors.city ? (
-                  <div className={classes.error}>{formik.errors.city}</div>
+                {formik.touched.password && formik.errors.password ? (
+                  <div className={classes.error}>{formik.errors.password}</div>
                 ) : null}
               </div>
 
               <div className={classes.input}>
                 <TextField
+                  type='password'
                   InputProps={{
                     className: classes.textField,
                     style: inputStyles,
                   }}
-                  id='country'
-                  label='Country'
+                  id='confirmPassword'
+                  label='Confirm Password'
                   variant='filled'
-                  {...formik.getFieldProps('country')}
+                  {...formik.getFieldProps('confirmPassword')}
                 />
-                {formik.touched.country && formik.errors.country ? (
-                  <div className={classes.error}>{formik.errors.country}</div>
+                {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? (
+                  <div className={classes.error}>
+                    {formik.errors.confirmPassword}
+                  </div>
                 ) : null}
               </div>
 
@@ -181,6 +186,9 @@ export default function Register() {
             </form>
           )}
         </Formik>
+        <footer>
+          Already registered? SignIn <NavLink to='/signIn'>here</NavLink>
+        </footer>
       </section>
     </div>
   );
