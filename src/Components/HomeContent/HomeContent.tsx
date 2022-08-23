@@ -1,10 +1,16 @@
 import React from 'react';
+import Flights from '../Flights/Flights';
+import Carousel from './Carousel';
 import classes from './HomeContent.module.css';
 
 export default function HomeContent() {
   return (
-    <div>
-      <h2 className={classes.title}>Book Flights & Hotels Online</h2>
+    <div className={classes.HomeContent}>
+      <div className={classes.title}>
+        <h2>Book Hotels & Flights Online</h2>
+      </div>
+      <Carousel />
+      <Flights />
     </div>
   );
 }

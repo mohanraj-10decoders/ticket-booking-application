@@ -9,3 +9,8 @@ export interface MockDataUrl {
   name: string;
   imageUrl: string;
 }
+
+export interface CarouselBannerType {
+  id: Number;
+  imageUrl: string;
+}
