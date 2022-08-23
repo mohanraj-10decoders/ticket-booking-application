@@ -1,0 +1,15 @@
+.content{
+    color: black;
+    text-align: left;
+    padding: 10px 20px;
+    background-color: #ebe4e4;
+    border-top: 1px solid lightgray;
+}
+
+.content h3{
+    font-size: 1.2rem;
+}
+
+.content p{
+    font-size: 0.8rem;
+}

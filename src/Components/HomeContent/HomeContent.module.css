@@ -7,3 +7,9 @@
 .HomeContent{
     padding: 20px 10px;
 }
+.bottomSection{
+    background-color: white;
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 5px;
+}

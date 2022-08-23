@@ -1,6 +1,7 @@
 import React from 'react';
-import Flights from '../Flights/Flights';
 import Carousel from './Carousel';
+import DisplayCard from './DisplayCard';
+import About from './About';
 import classes from './HomeContent.module.css';
 
 export default function HomeContent() {
@@ -10,7 +11,10 @@ export default function HomeContent() {
         <h2>Book Hotels & Flights Online</h2>
       </div>
       <Carousel />
-      <Flights />
+      <section className={classes.bottomSection}>
+        <DisplayCard />
+        <About />
+      </section>
     </div>
   );
 }
