@@ -6,7 +6,7 @@
         "date": "Aug 29",
         "from":"Chennai",
         "to":"Delhi",
-        "price":"5,399"
+        "price":"₹ 5,399"
     },
     {
         "id":"2",
@@ -14,7 +14,7 @@
         "date": "Aug 28",
         "from":"Bangalore",
         "to":"Mumbai",
-        "price":"4,999"
+        "price":"₹ 4,999"
     },
     {
         "id":"3",
@@ -22,7 +22,7 @@
         "date": "Aug 29",
         "from":"Chennai",
         "to":"Kolkata",
-        "price":"6,249"
+        "price":"₹ 6,249"
     },
     {
         "id":"4",
@@ -30,7 +30,7 @@
         "date": "Aug 29",
         "from":"Mumbai",
         "to":"Hyderabad",
-        "price":"4,799"
+        "price":"₹ 4,799"
     },
     {
         "id":"5",
@@ -38,7 +38,7 @@
         "date": "Aug 30",
         "from":"Kolkata",
         "to":"Mumbai",
-        "price":"5,199"
+        "price":"₹ 5,199"
     }
 ]
 }

@@ -12,6 +12,7 @@
     background-color: white;
     padding: 20px;
     margin: 10px 0;
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -29,8 +30,24 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
-.flightCard{
-    
+.flightCard p{
+    margin-bottom: 5px;
+}
+
+.cities{
+    border-left: 3px dashed #ff9d0d;
+    padding-left: 5px;
+}
+
+.cardDate{
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 0;
+}
+
+.cardPrice{
+    color: red;
 }

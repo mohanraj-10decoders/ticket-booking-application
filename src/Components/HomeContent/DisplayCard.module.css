@@ -2,9 +2,8 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /* width: ; */
 }
 .cardImage{
-    /* width: ; */
-    max-width: 90%;
+    width: 50%;
+    min-width: 200px;
 }

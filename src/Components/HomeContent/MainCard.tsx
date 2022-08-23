@@ -45,13 +45,13 @@ function FlightsCard() {
         {FlightsData.data.map((data: FlightsCardType, index: Number) => {
           return (
             <div className={classes.flightCard}>
-              <p>{`${data.day}, ${data.date}`}</p>
-              <div>
-                <p>{data.from}</p>
-                <p>{data.to}</p>
+              <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>
+              <div className={classes.cities}>
+                <p className={classes.cardFrom}>{data.from}</p>
+                <p className={classes.cardTo}>{data.to}</p>
               </div>
-              <p>Starting from</p>
-              <h3>{data.price}</h3>
+              <p className={classes.cardDate}>Starting from</p>
+              <h3 className={classes.cardPrice}>{data.price}</h3>
             </div>
           );
         })}
