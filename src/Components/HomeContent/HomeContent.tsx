@@ -1,4 +1,5 @@
 import React from 'react';
+import MainCard from './MainCard';
 import Carousel from './Carousel';
 import DisplayCard from './DisplayCard';
 import About from './About';
@@ -9,6 +10,7 @@ export default function HomeContent() {
     <div className={classes.HomeContent}>
       <div className={classes.title}>
         <h2>Book Hotels & Flights Online</h2>
+        <MainCard />
       </div>
       <Carousel />
       <section className={classes.bottomSection}>

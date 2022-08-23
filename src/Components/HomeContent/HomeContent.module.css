@@ -1,8 +1,10 @@
 .title{
-    color: white;
-    font-weight: bold;
     padding: 50px 0;
     height: 60vh;
+}
+.title h2{
+    color: white;
+        font-weight: bold;
 }
 .HomeContent{
     padding: 20px 10px;
