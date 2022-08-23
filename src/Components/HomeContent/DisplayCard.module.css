@@ -1,9 +1,10 @@
-.content{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.cardImage{
-    width: 50%;
-    min-width: 200px;
+.cardImage {
+  width: 45%;
+  min-width: 200px;
+  padding: 10px 0;
 }

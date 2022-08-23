@@ -68,31 +68,56 @@ function Header() {
               style={{
                 display: 'flex',
                 justifyContent: 'space-around',
-                gap: '20px',
+                gap: '0px',
               }}
             >
               <div className='nav-item nav-link'>
-                <NavLink to='/home' className={classes.navLink}>
+                <NavLink
+                  to='/'
+                  className={({ isActive }) =>
+                    isActive ? classes.activeNavLink : classes.navLink
+                  }
+                >
                   Home
                 </NavLink>
               </div>
               <div className='nav-item nav-link'>
-                <NavLink to='/flights' className={classes.navLink}>
+                <NavLink
+                  to='/flights'
+                  className={({ isActive }) =>
+                    isActive ? classes.activeNavLink : classes.navLink
+                  }
+                >
                   Flights
                 </NavLink>
               </div>
               <div className='nav-item nav-link'>
-                <NavLink to='/hotels' className={classes.navLink}>
+                <NavLink
+                  to='/hotels'
+                  className={({ isActive }) =>
+                    isActive ? classes.activeNavLink : classes.navLink
+                  }
+                >
                   Hotels
                 </NavLink>
               </div>
               <div className='nav-item nav-link'>
-                <NavLink to='/offers' className={classes.navLink}>
+                <NavLink
+                  to='/offers'
+                  className={({ isActive }) =>
+                    isActive ? classes.activeNavLink : classes.navLink
+                  }
+                >
                   Offers
                 </NavLink>
               </div>
               <div className='nav-item nav-link'>
-                <NavLink to='/contact' className={classes.navLink}>
+                <NavLink
+                  to='/contact'
+                  className={({ isActive }) =>
+                    isActive ? classes.activeNavLink : classes.navLink
+                  }
+                >
                   Contact
                 </NavLink>
               </div>

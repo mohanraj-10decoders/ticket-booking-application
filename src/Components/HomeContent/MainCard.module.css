@@ -1,73 +1,83 @@
-.content{
-    background-color: rgba(200, 200, 200, 0.5);
-    border-radius: 5px;
-    width: 80%;
-    margin: auto;
-    color: black;
-    padding: 10px 5px;
-    text-align: left;
+.content {
+  background-color: rgba(200, 200, 200, 0.5);
+  border-radius: 5px;
+  width: 80%;
+  margin: auto;
+  color: black;
+  padding: 10px 5px;
+  text-align: left;
 }
 
-.mainContent{
-    background-color: white;
-    padding: 20px;
-    margin: 10px 0;
-    max-height: 300px;
-    overflow-y: auto;
+.mainContent {
+  background-color: white;
+  padding: 20px;
+  margin: 10px 0;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-.selectedButton, .unSelectedButton{
-    border: none;
-    box-shadow: none;
-    margin: 0 5px;
+.selectedButton,
+.unSelectedButton {
+  border: none;
+  box-shadow: none;
+  margin: 0 5px;
 }
 
-.unSelectedButton{
-    background-color: rgba(200, 200, 200, 0.5);
+.unSelectedButton {
+  background-color: rgba(200, 200, 200, 0.5);
 }
 
-.flightCards{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+.flightCards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.flightCard p{
-    margin-bottom: 5px;
+.flightCard {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
 }
 
-.cities{
-    border-left: 3px dashed #ff9d0d;
-    padding-left: 5px;
+.flightCard p {
+  margin-bottom: 5px;
 }
 
-.cardDate{
-    font-size: 0.9rem;
-    color: gray;
-    margin-bottom: 0;
+.cities {
+  border-left: 3px dashed #ff9d0d;
+  padding-left: 5px;
 }
 
-.cardPrice{
-    color: red;
+.cardDate {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 0;
 }
 
-.travelCard{
-    width: 300px;
-    box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    overflow: hidden;
+.cardPrice {
+  color: red;
+  margin: 5px 0;
 }
 
-.travelCard p{
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 5px 10px;
+.travelCard {
+  width: 300px;
+  box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.travelCardImage{
-    width: 100%;
-    height: auto;
+.travelCard p {
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.travelCardImage {
+  width: 100%;
+  height: auto;
 }

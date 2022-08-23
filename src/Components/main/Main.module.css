@@ -1,58 +1,70 @@
-.header{
-    position: sticky;
-    top: 0px;
-    width: 100%;
-    /* height: max-content; */
-    background-color: #017959;
-    z-index: 5;
+.header {
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  /* height: max-content; */
+  background-color: #017959;
+  z-index: 5;
 }
-.logo{
-    height: 30px;
-    width: auto;
-    background-color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+.logo {
+  height: 30px;
+  width: auto;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
-.main{
-    min-height: 100vh;
-    background: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/646839d211c046209d020907cddbde97.jpg');
-    background-repeat: no-repeat;
-    background-blend-mode: lighten;
-    background-size: cover;
+.main {
+  min-height: 100vh;
+  background: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/646839d211c046209d020907cddbde97.jpg');
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
+  background-size: cover;
 }
-.navLink{
-    text-decoration: none;
-    color: white !important;
-    font-weight: bold;
+.navLink,
+.activeNavLink {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
-ul{
-    list-style-type: none;
-    width: max-content; 
-    font-size: 0.8rem;  
-    padding-left: 15px;
+.navLink {
+  color: white !important;
 }
-li{
-    text-align: left;
+.activeNavLink {
+  color: #007c5b !important;
+  background-color: white;
 }
-h6{
-    padding-left: 15px;
+.navLink:hover {
+  background-color: rgba(200, 200, 200, 0.5);
 }
-.footer section{
-    background-color:  #353535;
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px 30px;
+ul {
+  list-style-type: none;
+  width: max-content;
+  font-size: 0.8rem;
+  padding-left: 15px;
 }
-.copyRight{
-    background-color: #007c5b;
-    color: white;
-    font-size: 0.8rem;
-    padding: 20px 0;
+li {
+  text-align: left;
 }
-.copyRight p{
-    padding:0px;
-    padding-top: 10px;
-    margin: 0px;
+h6 {
+  padding-left: 15px;
+}
+.footer section {
+  background-color: #353535;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px 30px;
+}
+.copyRight {
+  background-color: #007c5b;
+  color: white;
+  font-size: 0.8rem;
+  padding: 20px 0;
+}
+.copyRight p {
+  padding: 0px;
+  padding-top: 10px;
+  margin: 0px;
 }

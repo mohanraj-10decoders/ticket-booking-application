@@ -5,6 +5,7 @@ import Register from './Components/Register/Register';
 import SignIn from './Components/signIn/SignIn';
 import './App.css';
 import HomeContent from './Components/HomeContent/HomeContent';
+import Flights from './Components/Flights/Flights';
 
 function App() {
   return (
@@ -12,7 +13,11 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Main />}>
-            <Route path='/' element={<HomeContent />} />
+            <Route path='' element={<HomeContent />} />
+            <Route path='flights' element={<Flights />} />
+            <Route path='hotels' element={<HomeContent />} />
+            <Route path='offers' element={<HomeContent />} />
+            <Route path='contact' element={<HomeContent />} />
           </Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/signIn' element={<SignIn />}></Route>

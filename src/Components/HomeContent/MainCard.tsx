@@ -41,7 +41,7 @@ export default function MainCard() {
   );
 }
 
-function FlightsCard() {
+export function FlightsCard() {
   return (
     <div className={classes.flightsCards}>
       <h3>Best Flight Deals</h3>
