@@ -3,14 +3,13 @@ import { Button } from '@mui/material';
 import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import classes from './SignIn.module.css';
 import { regFormInputType } from '../Types';
 
 export default function SignIn() {
   const [error, setError] = useState('');
-  const navigate = useNavigate();
   const inputStyles = {
     height: '50px',
   };

@@ -68,3 +68,14 @@ h6 {
   padding-top: 10px;
   margin: 0px;
 }
+.dropDownItem {
+  color: black !important;
+  width: 100%;
+  text-align: left;
+  font-size: 0.9rem;
+  border: none;
+  background-color: white;
+}
+.dropDownItem:hover {
+  background-color: lightgray;
+}

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, NavLinkProps, Outlet, useNavigate } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';
 import corporates from '../../MockData/corporates.json';
@@ -33,9 +33,13 @@ export default function Main() {
 
 function Header() {
   const navigate = useNavigate();
+  // const [path, setPath] = useState('');
   const logout = () => {
     localStorage.removeItem('userDetail');
     navigate('/');
+  };
+  const gotoRoute = (routeToPath: string) => {
+    window.location.pathname = routeToPath;
   };
   return (
     <>
@@ -126,37 +130,58 @@ function Header() {
                   Contact
                 </NavLink>
               </div>
-              <div className='dropdown'>
+              <div className='dropdown' style={{ width: '150px' }}>
                 <button
                   type='button'
                   className='btn dropdown-toggle'
                   data-bs-toggle='dropdown'
+                  style={{ color: 'white', boxShadow: 'none' }}
                 >
-                  Manage Trip
+                  {/* Manage Bookings */}
                 </button>
                 <ul className='dropdown-menu'>
                   <li>
-                    <a className='dropdown-item' href='#'>
-                      My Trips
-                    </a>
+                    <button
+                      className={classes.dropDownItem}
+                      onClick={() => {
+                        gotoRoute('/dashboard/myBookings');
+                      }}
+                    >
+                      My Bookings
+                    </button>
                   </li>
                   <li>
-                    <a className='dropdown-item' href='#'>
+                    <button
+                      className={classes.dropDownItem}
+                      onClick={() => {
+                        gotoRoute('/dashboard/myBookings');
+                      }}
+                    >
                       Print Ticket
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a className='dropdown-item' href='#'>
-                      Web check-in
-                    </a>
+                    <button
+                      className={classes.dropDownItem}
+                      onClick={() => {
+                        gotoRoute('/dashboard/myBookings');
+                      }}
+                    >
+                      Web Check-In
+                    </button>
+                  </li>
+                  <li>
+                    <button className={classes.dropDownItem} onClick={logout}>
+                      LogOut
+                    </button>
                   </li>
                 </ul>
               </div>
-              <div>
+              {/* <div>
                 <button className='btn btn-light' onClick={logout}>
                   LogOut
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
