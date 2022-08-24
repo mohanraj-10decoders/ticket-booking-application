@@ -10,7 +10,7 @@
 .content h3 {
   background-color: #198754;
   color: white;
-  width: 33%;
+  /* width: ; */
   padding: 10px 20px;
   border-radius: 5px;
 }
@@ -47,4 +47,19 @@
 footer {
   font-size: 0.9rem;
   margin: 10px 0;
+}
+
+a {
+  text-decoration: none !important;
+  margin-left: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.errorMsg {
+  font-size: 0.9rem;
+  color: red;
 }

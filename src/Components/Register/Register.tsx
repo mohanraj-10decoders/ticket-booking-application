@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import * as Yup from 'yup';
+import { regFormInputType } from '../Types';
 import classes from './Register.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  //   const phoneRegExp = /[2-9]{2}\d{8}/;
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
   const inputStyles = {
     height: '40px',
   };
@@ -16,42 +19,67 @@ export default function Register() {
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
-    // phone: Yup.string()
-    //   .matches(phoneRegExp, 'Invalid phone number')
-    //   .required('Required'),
     password: Yup.string().required('Required'),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Passwords must match'
-    ),
+    confirmPassword: Yup.string()
+      .required('Required')
+      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   });
   return (
     <div className={classes.content}>
-      <h3>User Registration</h3>
       <section className={classes.formSection}>
+        <div className={classes.buttonContainer}>
+          <NavLink to='/'>
+            <Button
+              variant='outlined'
+              style={{
+                color: 'black',
+                border: 'none',
+                paddingLeft: '0px',
+              }}
+            >
+              <ChevronLeftIcon />
+              Home
+            </Button>
+          </NavLink>
+        </div>
+        <h3>User Registration</h3>
         <Formik
           initialValues={{
             name: '',
             email: '',
-            // phone: '',
             password: '',
             confirmPassword: '',
           }}
           validationSchema={valSchema}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
-            //   setUsers([...users, { id: users.length + 1, ...values }]);
-            setTimeout(() => {
-              alert(JSON.stringify(values));
-              // resetForm({
-              //   firstName: '',
-              //   lastName: '',
-              //   email: '',
-              //   phone: '',
-              //   city: '',
-              //   country: '',
-              // });
-              setSubmitting(false);
-            }, 400);
+          onSubmit={(
+            values: regFormInputType,
+            { setSubmitting, resetForm }
+          ) => {
+            let userExists = false;
+            let existingUsers: string | null = localStorage.getItem('users');
+            let regUsers: regFormInputType[] = JSON.parse(`${existingUsers}`);
+            regUsers.every(function (user) {
+              if (user.email === values.email) {
+                userExists = true;
+                setError('User already exists');
+                return false;
+              }
+              return true;
+            });
+            if (!userExists) {
+              let obj = { ...values };
+              delete obj.confirmPassword;
+              localStorage.setItem(
+                'users',
+                JSON.stringify([...regUsers, { ...obj }])
+              );
+              setTimeout(() => {
+                alert('User Registered Successfully!!');
+                resetForm({});
+                navigate('/signIn');
+                setSubmitting(true);
+              }, 400);
+            }
           }}
         >
           {(formik) => (
@@ -72,22 +100,6 @@ export default function Register() {
                 ) : null}
               </div>
 
-              {/* <div className={classes.input}>
-                <TextField
-                  InputProps={{
-                    className: classes.textField,
-                    style: inputStyles,
-                  }}
-                  id='lastName'
-                  label='Last Name'
-                  variant='filled'
-                  {...formik.getFieldProps('lastName')}
-                />
-                {formik.touched.lastName && formik.errors.lastName ? (
-                  <div className={classes.error}>{formik.errors.lastName}</div>
-                ) : null}
-              </div> */}
-
               <div className={classes.input}>
                 <TextField
                   InputProps={{
@@ -103,22 +115,6 @@ export default function Register() {
                   <div className={classes.error}>{formik.errors.email}</div>
                 ) : null}
               </div>
-
-              {/* <div className={classes.input}>
-                <TextField
-                  InputProps={{
-                    className: classes.textField,
-                    style: inputStyles,
-                  }}
-                  id='phone'
-                  label='Phone'
-                  variant='filled'
-                  {...formik.getFieldProps('phone')}
-                />
-                {formik.touched.phone && formik.errors.phone ? (
-                  <div className={classes.error}>{formik.errors.phone}</div>
-                ) : null}
-              </div> */}
 
               <div className={classes.input}>
                 <TextField
@@ -156,7 +152,7 @@ export default function Register() {
                   </div>
                 ) : null}
               </div>
-
+              {!!error.length && <p className={classes.errorMsg}>{error}</p>}
               <section className={classes.buttons}>
                 <Button variant='contained' color='success' type='submit'>
                   Register
@@ -168,17 +164,10 @@ export default function Register() {
                     backgroundColor: 'gray',
                   }}
                   variant='outlined'
-                  onClick={
-                    () => {}
-                    // formik.resetForm({
-                    //   firstName: '',
-                    //   lastName: '',
-                    //   email: '',
-                    //   phone: '',
-                    //   city: '',
-                    //   country: '',
-                    // })
-                  }
+                  onClick={() => {
+                    formik.resetForm({});
+                    setError('');
+                  }}
                 >
                   Cancel
                 </Button>
