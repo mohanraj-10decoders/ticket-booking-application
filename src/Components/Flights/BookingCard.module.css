@@ -23,9 +23,12 @@
   left: 10%;
 }
 .dropdownContainer {
+  padding: 0 30px;
+  /* margin: 0 auto; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 20px;
 }
 .dropDownDiv,
 .datePickerDiv {

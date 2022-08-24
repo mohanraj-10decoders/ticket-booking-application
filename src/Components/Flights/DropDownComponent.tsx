@@ -1,26 +1,24 @@
 import React, { Component, Fragment } from 'react';
 
 import Select from 'react-select';
-const colourOptions = [
-  { label: 'Red', value: 'Red' },
-  { label: 'Green', value: 'Green' },
-];
 
-export default class SingleSelect extends Component<{}> {
+export default class SingleSelect extends Component<{
+  data: { label: string; value: string }[];
+}> {
   render() {
     return (
       <Fragment>
         <Select
           className='basic-single'
           classNamePrefix='select'
-          defaultValue={colourOptions[0]}
+          //   defaultValue={}
           isDisabled={false}
           isLoading={false}
           isClearable={true}
           isRtl={false}
           isSearchable={true}
           name='color'
-          options={colourOptions}
+          options={this.props.data}
         />
 
         <div
