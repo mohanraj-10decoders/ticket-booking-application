@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 import Main from './Components/main/Main';
 import Register from './Components/Register/Register';
 import SignIn from './Components/signIn/SignIn';
@@ -12,8 +17,9 @@ function App() {
     <div className='App'>
       <Router>
         <Routes>
-          <Route path='/' element={<Main />}>
-            <Route path='' element={<HomeContent />} />
+          <Route path='/' element={<NavLink to='/signIn'>SignIn</NavLink>} />
+          <Route path='/dashboard' element={<Main />}>
+            <Route path='home' element={<HomeContent />} />
             <Route path='flights' element={<Flights />} />
             <Route path='hotels' element={<HomeContent />} />
             <Route path='offers' element={<HomeContent />} />

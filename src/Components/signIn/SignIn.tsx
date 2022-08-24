@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import classes from './SignIn.module.css';
+import { regFormInputType } from '../Types';
 
 export default function SignIn() {
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
   const inputStyles = {
     height: '50px',
   };
@@ -16,8 +20,23 @@ export default function SignIn() {
   });
   return (
     <div className={classes.content}>
-      <h3>Sign In</h3>
       <section className={classes.formSection}>
+        <div className={classes.buttonContainer}>
+          <NavLink to='/'>
+            <Button
+              variant='outlined'
+              style={{
+                color: 'black',
+                border: 'none',
+                paddingLeft: '0px',
+              }}
+            >
+              <ChevronLeftIcon />
+              Home
+            </Button>
+          </NavLink>
+        </div>
+        <h4>Sign In</h4>
         <Formik
           initialValues={{
             email: '',
@@ -25,19 +44,30 @@ export default function SignIn() {
           }}
           validationSchema={valSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            //   setUsers([...users, { id: users.length + 1, ...values }]);
-            setTimeout(() => {
-              alert(JSON.stringify(values));
-              // resetForm({
-              //   firstName: '',
-              //   lastName: '',
-              //   email: '',
-              //   phone: '',
-              //   city: '',
-              //   country: '',
-              // });
+            let userAuth = false;
+            let existingUsers: string | null = localStorage.getItem('users');
+            let regUsers: regFormInputType[] = JSON.parse(`${existingUsers}`);
+            regUsers.every(function (user) {
+              if (
+                user.email === values.email &&
+                user.password === values.password
+              ) {
+                userAuth = true;
+                localStorage.setItem(
+                  'userDetail',
+                  JSON.stringify({ name: user.name, email: user.email })
+                );
+                return false;
+              }
+              return true;
+            });
+            if (!userAuth) {
+              setError('Invalid usernme or password');
               setSubmitting(false);
-            }, 400);
+            } else {
+              resetForm({});
+              window.location.pathname = '/dashboard/home';
+            }
           }}
         >
           {(formik) => (
@@ -73,7 +103,7 @@ export default function SignIn() {
                   <div className={classes.error}>{formik.errors.password}</div>
                 ) : null}
               </div>
-
+              {!!error.length && <p className={classes.errorMsg}>{error}</p>}
               <section className={classes.buttons}>
                 <Button variant='contained' color='success' type='submit'>
                   Sign In
@@ -85,17 +115,7 @@ export default function SignIn() {
                     backgroundColor: 'gray',
                   }}
                   variant='outlined'
-                  onClick={
-                    () => {}
-                    // formik.resetForm({
-                    //   firstName: '',
-                    //   lastName: '',
-                    //   email: '',
-                    //   phone: '',
-                    //   city: '',
-                    //   country: '',
-                    // })
-                  }
+                  onClick={() => formik.resetForm({})}
                 >
                   Cancel
                 </Button>

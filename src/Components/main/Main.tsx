@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';
 import corporates from '../../MockData/corporates.json';
@@ -32,6 +32,11 @@ export default function Main() {
 }
 
 function Header() {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('userDetail');
+    navigate('/');
+  };
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark'>
@@ -39,7 +44,7 @@ function Header() {
           className='container-fluid'
           style={{ paddingTop: '10px', paddingBottom: '10px' }}
         >
-          <NavLink to='/'>
+          <NavLink to='/dashboard/home'>
             <img
               className={classes.logo}
               src='https://hotelstatic.happyeasygo.com/ForFront/pc/logo.png'
@@ -73,7 +78,7 @@ function Header() {
             >
               <div className='nav-item nav-link'>
                 <NavLink
-                  to='/'
+                  to='/dashboard/home'
                   className={({ isActive }) =>
                     isActive ? classes.activeNavLink : classes.navLink
                   }
@@ -83,7 +88,7 @@ function Header() {
               </div>
               <div className='nav-item nav-link'>
                 <NavLink
-                  to='/flights'
+                  to='/dashboard/flights'
                   className={({ isActive }) =>
                     isActive ? classes.activeNavLink : classes.navLink
                   }
@@ -93,7 +98,7 @@ function Header() {
               </div>
               <div className='nav-item nav-link'>
                 <NavLink
-                  to='/hotels'
+                  to='/dashboard/hotels'
                   className={({ isActive }) =>
                     isActive ? classes.activeNavLink : classes.navLink
                   }
@@ -103,7 +108,7 @@ function Header() {
               </div>
               <div className='nav-item nav-link'>
                 <NavLink
-                  to='/offers'
+                  to='/dashboard/offers'
                   className={({ isActive }) =>
                     isActive ? classes.activeNavLink : classes.navLink
                   }
@@ -113,7 +118,7 @@ function Header() {
               </div>
               <div className='nav-item nav-link'>
                 <NavLink
-                  to='/contact'
+                  to='/dashboard/contact'
                   className={({ isActive }) =>
                     isActive ? classes.activeNavLink : classes.navLink
                   }
@@ -147,11 +152,11 @@ function Header() {
                   </li>
                 </ul>
               </div>
-              <NavLink to='/signIn'>
-                <div>
-                  <button className='btn btn-light'>Sign-In</button>
-                </div>
-              </NavLink>
+              <div>
+                <button className='btn btn-light' onClick={logout}>
+                  LogOut
+                </button>
+              </div>
             </div>
           </div>
         </div>
