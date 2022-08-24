@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, NavLinkProps, Outlet, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';
 import corporates from '../../MockData/corporates.json';
 import payments from '../../MockData/payments.json';
 import { MockDataPath, MockDataUrl } from '../../MockDataTypes/Types';
 import classes from './Main.module.css';
-import HomeContent from '../HomeContent/HomeContent';
 
 interface jsonData {
   data: MockDataPath[] | MockDataUrl[];

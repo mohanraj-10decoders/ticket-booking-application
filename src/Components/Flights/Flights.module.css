@@ -4,19 +4,23 @@
   background-position: center;
   background-repeat: no-repeat; */
   font-size: 2rem;
-  color: white;
-  padding: 30px 0;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 20px;
   margin-bottom: 0;
+  border-radius: 5px;
 }
 .header {
   background-image: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/7b1b0a40fe39470a8166252f994d702b.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 40vh;
+  min-height: 30vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  background-color: white;
+  padding-top: 20px;
 }
 .bottomSection {
   width: 100%;

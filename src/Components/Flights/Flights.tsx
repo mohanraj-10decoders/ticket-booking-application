@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from '../HomeContent/Carousel';
 import DisplayCard from '../HomeContent/DisplayCard';
 import { FlightsCard } from '../HomeContent/MainCard';
+import BookingCard from './BookingCard';
 import classes from './Flights.module.css';
 
 export default function Flights() {
@@ -12,6 +13,9 @@ export default function Flights() {
           Book Domestic & International Flight Online
         </h3>
       </header>
+      <div style={{ position: 'relative' }}>
+        <BookingCard />
+      </div>
       <section className={classes.bottomSection}>
         <div className={classes.carDisplayCard}>
           <Carousel />
