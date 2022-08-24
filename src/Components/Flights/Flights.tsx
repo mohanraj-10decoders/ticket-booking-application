@@ -7,9 +7,11 @@ import classes from './Flights.module.css';
 export default function Flights() {
   return (
     <div className={classes.content}>
-      <h3 className={classes.h3}>
-        Book Domestic & International Flight Online
-      </h3>
+      <header className={classes.header}>
+        <h3 className={classes.h3}>
+          Book Domestic & International Flight Online
+        </h3>
+      </header>
       <section className={classes.bottomSection}>
         <div className={classes.carDisplayCard}>
           <Carousel />

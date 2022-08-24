@@ -1,14 +1,22 @@
 .h3 {
-  background-image: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/7b1b0a40fe39470a8166252f994d702b.jpg');
+  /* background-image: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/7b1b0a40fe39470a8166252f994d702b.jpg');
   background-size: cover;
   background-position: center;
-  /* background-position-y: -120px; */
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   font-size: 2rem;
   color: white;
   padding: 30px 0;
-  height: 40vh;
   margin-bottom: 0;
+}
+.header {
+  background-image: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/7b1b0a40fe39470a8166252f994d702b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .bottomSection {
   width: 100%;
