@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface ActionType {
-  payload: { value: string; keyString: string };
+  payload: { value: string | undefined; keyString: string };
   type: string;
 }
 
 export interface BookingObjectType {
-  boarding: string;
-  destination: string;
-  date: String | null;
-  class: string;
-  travellers: string;
+  boarding: string | undefined;
+  destination: string | undefined;
+  date: string | undefined | null;
+  travelClass: string | undefined;
+  travellers: string | undefined;
 }
 const initialState: BookingObjectType = {
   boarding: '',
   destination: '',
   date: null,
-  class: '',
+  travelClass: '',
   travellers: '',
 };
 
@@ -27,8 +27,8 @@ export const currentBookingSlice = createSlice({
     ADDBOOKING: (state: BookingObjectType, { payload, type }: ActionType) => {
       console.log('action obj', type, payload);
       switch (payload.keyString) {
-        case 'class':
-          state.class = payload.value;
+        case 'travelClass':
+          state.travelClass = payload.value;
           break;
         case 'boarding':
           state.boarding = payload.value;
@@ -37,7 +37,7 @@ export const currentBookingSlice = createSlice({
           state.destination = payload.value;
           break;
         case 'date':
-          state.date = payload.value.toString();
+          state.date = payload.value;
           break;
         case 'travellers':
           state.travellers = payload.value;

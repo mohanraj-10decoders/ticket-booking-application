@@ -3,11 +3,7 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
-import {
-  ADDBOOKING,
-  BookingObjectType,
-  REMOVEBOOKING,
-} from '../../Redux/Reducer';
+import { ADDBOOKING } from '../../Redux/Reducer';
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 

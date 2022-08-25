@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
 import DatePickerComponent from './DatePicker';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../Redux/Store';
 
 type optionType = Object & {
   value: string;
@@ -16,7 +18,29 @@ interface propType {
 }
 
 export default function BookingCard() {
-  const boarding: propType = {
+  // const {
+  //   boarding,
+  //   destination,
+  //   date,
+  //   travelClass,
+  //   travellers,
+  // }: BookingObjectType = useSelector((state: BookingObjectType) => state);
+
+  const booking = useSelector(
+    (state: RootState) => state.CurrentBookingReducer
+  );
+  let { boarding, destination, date, travelClass, travellers } = booking;
+  let buttonEnabled: boolean = !!(
+    boarding &&
+    destination &&
+    date &&
+    travelClass &&
+    travellers
+  );
+  useEffect(() => {
+    console.log('Testing button', booking, buttonEnabled);
+  }, [booking, buttonEnabled]);
+  const boardingOptions: propType = {
     options: {
       keyString: 'boarding',
       data: [
@@ -29,7 +53,7 @@ export default function BookingCard() {
       ],
     },
   };
-  const destination: propType = {
+  const destinationOptions: propType = {
     options: {
       keyString: 'destination',
       data: [
@@ -42,9 +66,9 @@ export default function BookingCard() {
       ],
     },
   };
-  const travelClass: propType = {
+  const travelClassOptions: propType = {
     options: {
-      keyString: 'class',
+      keyString: 'travelClass',
       data: [
         { label: 'Economy', value: 'Economy' },
         { label: 'Business', value: 'Business' },
@@ -53,7 +77,7 @@ export default function BookingCard() {
       ],
     },
   };
-  const noOfTravellers: propType = {
+  const noOfTravellersOptions: propType = {
     options: {
       keyString: 'travellers',
       data: [
@@ -73,11 +97,11 @@ export default function BookingCard() {
         <div className={classes.dropdownContainer}>
           <div className={classes.dropDownDiv}>
             <h5>From</h5>
-            <SingleSelect {...boarding.options} />
+            <SingleSelect {...boardingOptions.options} />
           </div>
           <div className={classes.dropDownDiv}>
             <h5>To</h5>
-            <SingleSelect {...destination.options} />
+            <SingleSelect {...destinationOptions.options} />
           </div>
           <div className={classes.datePickerDiv}>
             <h5>Journey Date</h5>
@@ -85,14 +109,16 @@ export default function BookingCard() {
           </div>
           <div className={classes.dropDownDiv}>
             <h5>No of Travellers</h5>
-            <SingleSelect {...noOfTravellers.options} />
+            <SingleSelect {...noOfTravellersOptions.options} />
           </div>
           <div className={classes.dropDownDiv}>
             <h5>Class</h5>
-            <SingleSelect {...travelClass.options} />
+            <SingleSelect {...travelClassOptions.options} />
           </div>
         </div>
-        <button className={classes.applyButton}>Proceed to Booking</button>
+        <button className={classes.applyButton} disabled={!buttonEnabled}>
+          Proceed to Booking
+        </button>
       </div>
     </section>
   );
