@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  ADDBOOKING,
+  BookingObjectType,
+  REMOVEBOOKING,
+} from '../../Redux/Reducer';
 
 type optionType = Object & {
   value: string;
@@ -15,12 +21,17 @@ type propType = {
 
 export default function SingleSelect({ keyString, data }: propType) {
   const [selectedValue, setSelectedValue] = useState('');
+  const booking: BookingObjectType = useSelector(
+    (state: BookingObjectType) => state
+  );
+  const dispatch = useDispatch();
   const handleChange = (newValue: SelectValue) => {
     setSelectedValue(`${newValue?.value}`);
   };
   useEffect(() => {
-    console.log('props', keyString, data, selectedValue);
-  }, [selectedValue, data, keyString]);
+    dispatch(ADDBOOKING({ value: selectedValue, keyString: keyString }));
+    console.log('Testing redux', booking);
+  }, [selectedValue]);
   return (
     <>
       <Select

@@ -18,7 +18,7 @@ interface propType {
 export default function BookingCard() {
   const boarding: propType = {
     options: {
-      keyString: 'Boarding',
+      keyString: 'boarding',
       data: [
         { label: 'Chennai', value: 'Chennai' },
         { label: 'Delhi', value: 'Delhi' },
@@ -31,7 +31,7 @@ export default function BookingCard() {
   };
   const destination: propType = {
     options: {
-      keyString: 'Destination',
+      keyString: 'destination',
       data: [
         { label: 'Chennai', value: 'Chennai' },
         { label: 'Delhi', value: 'Delhi' },
@@ -44,7 +44,7 @@ export default function BookingCard() {
   };
   const travelClass: propType = {
     options: {
-      keyString: 'Class',
+      keyString: 'class',
       data: [
         { label: 'Economy', value: 'Economy' },
         { label: 'Business', value: 'Business' },
@@ -55,7 +55,7 @@ export default function BookingCard() {
   };
   const noOfTravellers: propType = {
     options: {
-      keyString: 'Travellers',
+      keyString: 'travellers',
       data: [
         { label: '1', value: '1' },
         { label: '2', value: '2' },

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import Reducer from '../Reducer';
+import CurrentBookingReducer from '../Reducer';
 
 export default configureStore({
   reducer: {
-    currentBooking: Reducer,
+    CurrentBookingReducer: CurrentBookingReducer,
   },
 });
