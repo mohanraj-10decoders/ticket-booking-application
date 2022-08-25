@@ -55,3 +55,23 @@
 .applyButton:disabled {
   background-color: rgba(255, 157, 13, 0.5);
 }
+.modalTitle {
+  text-align: center;
+  color: #ff9d0d;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.bookingButton,
+.cancelButton {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.bookingButton {
+  color: white;
+  background-color: black;
+}

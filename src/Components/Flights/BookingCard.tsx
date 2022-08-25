@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
 import DatePickerComponent from './DatePicker';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
+import Modal from 'react-modal';
+import ConfirmBooking from './ConfirmBooking';
 
 type optionType = Object & {
   value: string;
@@ -18,14 +20,10 @@ interface propType {
 }
 
 export default function BookingCard() {
-  // const {
-  //   boarding,
-  //   destination,
-  //   date,
-  //   travelClass,
-  //   travellers,
-  // }: BookingObjectType = useSelector((state: BookingObjectType) => state);
-
+  const [modal, setModal] = useState(false);
+  const handleModal = () => {
+    setModal(!modal);
+  };
   const booking = useSelector(
     (state: RootState) => state.CurrentBookingReducer
   );
@@ -40,6 +38,14 @@ export default function BookingCard() {
   useEffect(() => {
     console.log('Testing button', booking, buttonEnabled);
   }, [booking, buttonEnabled]);
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [modal]);
+
   const boardingOptions: propType = {
     options: {
       keyString: 'boarding',
@@ -116,10 +122,56 @@ export default function BookingCard() {
             <SingleSelect {...travelClassOptions.options} />
           </div>
         </div>
-        <button className={classes.applyButton} disabled={!buttonEnabled}>
+        <button
+          className={classes.applyButton}
+          disabled={!buttonEnabled}
+          onClick={handleModal}
+        >
           Proceed to Booking
         </button>
       </div>
+      <Modal
+        isOpen={modal}
+        onRequestClose={handleModal}
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 100,
+            left: 200,
+            right: 200,
+            bottom: 50,
+            borderRadius: '10px',
+            zIndex: '2',
+            minWidth: '500px',
+            // backgroundColor: 'rgba(255, 255, 255, 0.75)',
+          },
+          content: {
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+            right: '0px',
+            bottom: '0px',
+            background: '#fff',
+            overflow: 'hidden',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '10px',
+            outline: 'none',
+            padding: '20px 100px',
+          },
+        }}
+      >
+        {/* <button onClick={handleModal}>x</button> */}
+        <h4 className={classes.modalTitle}>Your booking details</h4>
+        <ConfirmBooking />
+        <div className={classes.buttons}>
+          <button onClick={handleModal} className={classes.bookingButton}>
+            Book now
+          </button>
+          <button onClick={handleModal} className={classes.cancelButton}>
+            Cancel
+          </button>
+        </div>
+      </Modal>
     </section>
   );
 }

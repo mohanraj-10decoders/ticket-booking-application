@@ -1,0 +1,15 @@
+.detailsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  /* margin: 20px 50px; */
+  /* padding: ; */
+}
+
+.detailsContainer > div {
+  min-width: 45%;
+  background-color: lightgray;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
