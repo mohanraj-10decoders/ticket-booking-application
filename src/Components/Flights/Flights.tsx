@@ -18,6 +18,8 @@ export default function Flights() {
         <BookingCard />
       </div>
       <section className={classes.bottomSection}>
+        <h3>Your Booking History</h3>
+        <BookingHistory />
         <div className={classes.carDisplayCard}>
           <Carousel />
           <DisplayCard />
@@ -25,7 +27,6 @@ export default function Flights() {
         <div className={classes.flightsCardContainer}>
           <FlightsCard />
         </div>
-        <BookingHistory />
       </section>
     </div>
   );

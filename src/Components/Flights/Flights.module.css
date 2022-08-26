@@ -26,6 +26,9 @@
   width: 100%;
   background-color: white;
 }
+.bottomSection > h3 {
+  padding: 20px 0;
+}
 .flightsCardContainer {
   padding: 20px 50px;
 }

@@ -1,0 +1,27 @@
+.table {
+  /* background-color: green; */
+  width: 80%;
+  padding: 10px 0;
+  margin: 0 auto 40px auto;
+  column-gap: 5px;
+  font-family: cursive;
+}
+tr > td,
+tr > th {
+  /* width: 16%; */
+  /* min-width: 100px; */
+}
+tr > th {
+  background-color: #ff9d0d;
+  color: white;
+  border-radius: 10px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.noHistoryMsg {
+  text-align: center;
+  color: gray;
+  font-family: cursive;
+  font-weight: bold;
+  margin: 30px 0;
+}
