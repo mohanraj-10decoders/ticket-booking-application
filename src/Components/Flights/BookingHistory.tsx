@@ -9,7 +9,7 @@ export default function BookingHistory() {
   );
   console.log('Booking history', bookingHistory.data);
   return (
-    <>
+    <section className={classes.tableContainer}>
       <table className={classes.table}>
         <tr>
           <th>Sl.No</th>
@@ -41,6 +41,6 @@ export default function BookingHistory() {
       {bookingHistory.data.length < 2 && (
         <div className={classes.noHistoryMsg}>No booking history available</div>
       )}
-    </>
+    </section>
   );
 }
