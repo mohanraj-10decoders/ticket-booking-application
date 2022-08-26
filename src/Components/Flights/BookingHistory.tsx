@@ -21,6 +21,13 @@ export default function BookingHistory() {
           <th>Price</th>
         </tr>
         {bookingHistory.data.map((booking, index) => {
+          let date: string | null = booking.date
+            ? new Date(Date.parse(booking.date))
+                .toString()
+                .split(' ')
+                .splice(1, 3)
+                .join(' ')
+            : null;
           if (index !== 0)
             return (
               <tr>
@@ -29,9 +36,7 @@ export default function BookingHistory() {
                 <td>{booking.destination}</td>
                 <td>{booking.travellers}</td>
                 <td>{booking.travelClass}</td>
-                <td>
-                  {booking.date ? Date.parse(booking.date) : booking.date}
-                </td>
+                <td>{date}</td>
                 <td>Rs. 4,899</td>
               </tr>
             );
