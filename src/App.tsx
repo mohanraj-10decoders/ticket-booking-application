@@ -19,6 +19,7 @@ function App() {
         <Routes>
           <Route path='/' element={<NavLink to='/signIn'>SignIn</NavLink>} />
           <Route path='/dashboard' element={<Main />}>
+            <Route path='' element={<HomeContent />} />
             <Route path='home' element={<HomeContent />} />
             <Route path='flights' element={<Flights />} />
             <Route path='hotels' element={<HomeContent />} />

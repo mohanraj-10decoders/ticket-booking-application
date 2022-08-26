@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
 import DatePickerComponent from './DatePicker';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import Modal from 'react-modal';
 import ConfirmBooking from './ConfirmBooking';
+import { ADDHISTORY } from '../../Redux/Reducer/historySlice';
 
 type optionType = Object & {
   value: string;
@@ -21,6 +22,7 @@ interface propType {
 
 export default function BookingCard() {
   const [modal, setModal] = useState(false);
+  const dispatch = useDispatch();
   const handleModal = () => {
     setModal(!modal);
   };
@@ -35,6 +37,15 @@ export default function BookingCard() {
     travelClass &&
     travellers
   );
+  const addToHistory = () => {
+    console.log('adding to history', booking);
+    dispatch(
+      ADDHISTORY({
+        value: booking,
+      })
+    );
+    handleModal();
+  };
   useEffect(() => {
     console.log('Testing button', booking, buttonEnabled);
   }, [booking, buttonEnabled]);
@@ -99,7 +110,6 @@ export default function BookingCard() {
   return (
     <section className={classes.sectionContainer}>
       <div className={classes.content}>
-        {/* <h4>Booking Card</h4> */}
         <div className={classes.dropdownContainer}>
           <div className={classes.dropDownDiv}>
             <h5>From</h5>
@@ -164,7 +174,7 @@ export default function BookingCard() {
         <h4 className={classes.modalTitle}>Your booking details</h4>
         <ConfirmBooking />
         <div className={classes.buttons}>
-          <button onClick={handleModal} className={classes.bookingButton}>
+          <button onClick={addToHistory} className={classes.bookingButton}>
             Book now
           </button>
           <button onClick={handleModal} className={classes.cancelButton}>

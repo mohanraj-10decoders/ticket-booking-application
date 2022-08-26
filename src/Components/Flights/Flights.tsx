@@ -3,6 +3,7 @@ import Carousel from '../HomeContent/Carousel';
 import DisplayCard from '../HomeContent/DisplayCard';
 import { FlightsCard } from '../HomeContent/MainCard';
 import BookingCard from './BookingCard';
+import BookingHistory from './BookingHistory';
 import classes from './Flights.module.css';
 
 export default function Flights() {
@@ -24,6 +25,7 @@ export default function Flights() {
         <div className={classes.flightsCardContainer}>
           <FlightsCard />
         </div>
+        <BookingHistory />
       </section>
     </div>
   );
