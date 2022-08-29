@@ -16,6 +16,7 @@ const DatePickerComponent = () => {
   return (
     <DatePicker
       selected={startDate}
+      minDate={new Date()}
       onChange={(date: Date) => setStartDate(date)}
       style={{ padding: '0px' }}
     />
