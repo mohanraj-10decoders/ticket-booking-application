@@ -109,7 +109,7 @@ function Header() {
                   Hotels
                 </NavLink>
               </div>
-              <div className='nav-item nav-link'>
+              {/* <div className='nav-item nav-link'>
                 <NavLink
                   to='/dashboard/offers'
                   className={({ isActive }) =>
@@ -128,7 +128,7 @@ function Header() {
                 >
                   Contact
                 </NavLink>
-              </div>
+              </div> */}
               <div className='dropdown' style={{ width: '150px' }}>
                 <button
                   type='button'

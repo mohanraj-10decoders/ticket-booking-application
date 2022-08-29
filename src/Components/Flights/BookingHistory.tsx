@@ -60,7 +60,7 @@ export default function BookingHistory() {
               left: '0px',
               right: '0px',
               bottom: '0px',
-              background: '#fff',
+              background: 'lightgray',
               overflow: 'hidden',
               WebkitOverflowScrolling: 'touch',
               borderRadius: '10px',

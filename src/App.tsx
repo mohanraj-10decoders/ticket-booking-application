@@ -11,6 +11,7 @@ import SignIn from './Components/signIn/SignIn';
 import './App.css';
 import HomeContent from './Components/HomeContent/HomeContent';
 import Flights from './Components/Flights/Flights';
+import Hotels from './Components/Hotels/Hotels';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Route path='' element={<HomeContent />} />
             <Route path='home' element={<HomeContent />} />
             <Route path='flights' element={<Flights />} />
-            <Route path='hotels' element={<HomeContent />} />
+            <Route path='hotels' element={<Hotels />} />
             <Route path='offers' element={<HomeContent />} />
             <Route path='contact' element={<HomeContent />} />
           </Route>
