@@ -30,6 +30,7 @@ const historyInitialState: BookingHistoryType = {
       date: null,
       travelClass: '',
       travellers: '',
+      price: '',
     },
   ],
 };
@@ -45,7 +46,7 @@ export const bookingHistorySlice = createSlice({
       console.log('old state', current(state));
       let newData = [
         ...state.data,
-        { id: state.data.length, ...payload.value },
+        { id: new Date().getTime(), ...payload.value },
       ];
       //   state.data = [...state.data, payload.value];
       state.data = newData;

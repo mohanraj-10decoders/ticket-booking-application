@@ -7,6 +7,7 @@ import { RootState } from '../../Redux/Store';
 import Modal from 'react-modal';
 import ConfirmBooking from './ConfirmBooking';
 import { ADDHISTORY } from '../../Redux/Reducer/historySlice';
+import { ADDBOOKING } from '../../Redux/Reducer';
 
 type optionType = Object & {
   value: string;
@@ -22,14 +23,38 @@ interface propType {
 
 export default function BookingCard() {
   const [modal, setModal] = useState(false);
+  const [myPrice, setPrice] = useState('1000');
   const dispatch = useDispatch();
-  const handleModal = () => {
-    setModal(!modal);
-  };
   const booking = useSelector(
     (state: RootState) => state.CurrentBookingReducer
   );
-  let { boarding, destination, date, travelClass, travellers } = booking;
+  let { boarding, destination, date, travelClass, travellers = '' } = booking;
+  const calculatePrice = () => {
+    if (
+      boarding === 'Chennai' ||
+      boarding === 'Delhi' ||
+      boarding === 'Kolkata'
+    ) {
+      if (
+        destination === 'Chennai' ||
+        destination === 'Delhi' ||
+        destination === 'Kolkata'
+      )
+        setPrice((parseInt('5600') * parseInt(travellers)).toString());
+      else setPrice((parseInt('10000') * parseInt(travellers)).toString());
+    } else if (
+      destination === 'Chennai' ||
+      destination === 'Delhi' ||
+      destination === 'Kolkata'
+    )
+      setPrice((parseInt('10000') * parseInt(travellers)).toString());
+    else setPrice((parseInt('5600') * parseInt(travellers)).toString());
+    dispatch(ADDBOOKING({ value: '1000', keyString: 'price' }));
+    handleModal();
+  };
+  const handleModal = () => {
+    setModal(!modal);
+  };
   let buttonEnabled: boolean = !!(
     boarding &&
     destination &&
@@ -41,7 +66,7 @@ export default function BookingCard() {
     console.log('adding to history', booking);
     dispatch(
       ADDHISTORY({
-        value: booking,
+        value: { ...booking, price: myPrice },
       })
     );
     handleModal();
@@ -135,7 +160,7 @@ export default function BookingCard() {
         <button
           className={classes.applyButton}
           disabled={!buttonEnabled}
-          onClick={handleModal}
+          onClick={calculatePrice}
         >
           Proceed to Booking
         </button>
@@ -173,7 +198,7 @@ export default function BookingCard() {
       >
         {/* <button onClick={handleModal}>x</button> */}
         <h4 className={classes.modalTitle}>Your booking details</h4>
-        <ConfirmBooking />
+        <ConfirmBooking {...{ price: myPrice }} />
         <div className={classes.buttons}>
           <button onClick={addToHistory} className={classes.bookingButton}>
             Confirm

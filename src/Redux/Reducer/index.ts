@@ -12,6 +12,7 @@ export interface BookingObjectType {
   date: string | undefined | null;
   travelClass: string | undefined;
   travellers: string | undefined;
+  price: string;
 }
 const initialState: BookingObjectType = {
   boarding: '',
@@ -19,6 +20,7 @@ const initialState: BookingObjectType = {
   date: null,
   travelClass: '',
   travellers: '',
+  price: '',
 };
 
 export const currentBookingSlice = createSlice({

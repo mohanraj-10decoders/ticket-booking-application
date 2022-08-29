@@ -96,7 +96,7 @@ export default function BookingHistory() {
       )}
       <table className={classes.table}>
         <tr>
-          <th>No</th>
+          <th>#</th>
           <th>ID</th>
           <th>Boarding</th>
           <th>Destination</th>
@@ -124,7 +124,7 @@ export default function BookingHistory() {
                 <td>{booking.travellers}</td>
                 <td>{booking.travelClass}</td>
                 <td>{date}</td>
-                <td>Rs. 4,899</td>
+                <td>{booking.price}</td>
                 <td>
                   <button
                     className={classes.deleteButton}

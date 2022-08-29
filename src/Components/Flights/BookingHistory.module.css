@@ -25,6 +25,7 @@ tr > th {
   border-radius: 10px;
   text-transform: uppercase;
   overflow: hidden;
+  padding: 0 10px;
 }
 .noHistoryMsg {
   text-align: center;

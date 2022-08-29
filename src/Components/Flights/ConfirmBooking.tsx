@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import classes from './ConfirmBooking.module.css';
 
-export default function ConfirmBooking() {
+export default function ConfirmBooking({ price }: { price: string }) {
   const booking = useSelector(
     (state: RootState) => state.CurrentBookingReducer
   );
@@ -33,7 +33,7 @@ export default function ConfirmBooking() {
       </div>
       <div>
         <h5>Price : </h5>
-        Rs. 4,899
+        {price}
       </div>
     </div>
   );
