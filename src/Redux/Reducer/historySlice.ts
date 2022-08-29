@@ -6,6 +6,10 @@ interface HistoryActionType {
   type: string;
 }
 
+interface DeleteHistoryType {
+  payload: { id: number | undefined };
+}
+
 interface BookingHistoryType {
   data: BookingObjectType[];
 }
@@ -20,6 +24,7 @@ interface BookingHistoryType {
 const historyInitialState: BookingHistoryType = {
   data: [
     {
+      id: 0,
       boarding: 'Test',
       destination: '',
       date: null,
@@ -38,15 +43,25 @@ export const bookingHistorySlice = createSlice({
       { payload, type }: HistoryActionType
     ) => {
       console.log('old state', current(state));
-      let newData = [...state.data, payload.value];
+      let newData = [
+        ...state.data,
+        { id: state.data.length, ...payload.value },
+      ];
       //   state.data = [...state.data, payload.value];
       state.data = newData;
       console.log('new state', current(state));
       //   console.log('new state data', current(state.data));
     },
+    DELETEHISTORYBYID: (
+      state: BookingHistoryType,
+      { payload }: DeleteHistoryType
+    ) => {
+      let newData = state.data.filter((da) => da.id !== payload.id);
+      state.data = newData;
+    },
   },
 });
 
-export const { ADDHISTORY } = bookingHistorySlice.actions;
+export const { ADDHISTORY, DELETEHISTORYBYID } = bookingHistorySlice.actions;
 
 export default bookingHistorySlice.reducer;

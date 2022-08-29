@@ -143,6 +143,7 @@ export default function BookingCard() {
       <Modal
         isOpen={modal}
         onRequestClose={handleModal}
+        appElement={document.getElementById('root') as HTMLElement}
         style={{
           overlay: {
             position: 'fixed',
@@ -175,7 +176,7 @@ export default function BookingCard() {
         <ConfirmBooking />
         <div className={classes.buttons}>
           <button onClick={addToHistory} className={classes.bookingButton}>
-            Book now
+            Confirm
           </button>
           <button onClick={handleModal} className={classes.cancelButton}>
             Cancel

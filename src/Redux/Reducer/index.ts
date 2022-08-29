@@ -6,6 +6,7 @@ interface ActionType {
 }
 
 export interface BookingObjectType {
+  id?: number | undefined;
   boarding: string | undefined;
   destination: string | undefined;
   date: string | undefined | null;
@@ -47,7 +48,9 @@ export const currentBookingSlice = createSlice({
       }
       //    state = {...state}
     },
-    REMOVEBOOKING: (state: BookingObjectType, action: ActionType) => {},
+    REMOVEBOOKING: (state: BookingObjectType, action: ActionType) => {
+      state = { ...initialState };
+    },
   },
 });
 

@@ -33,3 +33,18 @@ tr > th {
   font-weight: bold;
   margin: 30px 0;
 }
+.deleteButton {
+  border: none;
+}
+.yesOrNo {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.modalButtonConatiner {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
