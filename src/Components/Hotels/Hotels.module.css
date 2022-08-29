@@ -1,5 +1,6 @@
 .container {
-  height: 100vh;
+  /* height: 100vh;
+  overflow-y: auto; */
   background-color: lightgray;
 }
 .content {
@@ -27,6 +28,9 @@
   -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .staticDisplay {
   margin: 0 auto;
@@ -34,4 +38,16 @@
   padding: 20px 0;
   width: 80%;
   background-color: lightgray;
+}
+.popularHotels {
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  /* margin-bottom: 100px; */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.popularHotels > h4 {
+  text-align: left;
+  padding: 20px 0;
 }

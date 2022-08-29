@@ -14,7 +14,7 @@ type optionType = Object & {
   label: string;
 };
 
-interface propType {
+export interface propType {
   options: {
     keyString: string;
     data: optionType[];

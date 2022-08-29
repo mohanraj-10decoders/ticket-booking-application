@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from '../HomeContent/Carousel';
 import DisplayCard from '../HomeContent/DisplayCard';
+import HotelDestinations from './HotelDestinations';
 import classes from './Hotels.module.css';
 
 export default function Hotels() {
@@ -14,8 +15,9 @@ export default function Hotels() {
         <Carousel />
         <DisplayCard />
       </section>
-      <section>
-        <h2>Hotels for you</h2>
+      <section className={classes.popularHotels}>
+        <h4>Popular Indian Hotel Destinations</h4>
+        <HotelDestinations />
       </section>
     </div>
   );
