@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
-import DatePickerComponent from './DatePicker';
+import DatePickerComponent from './DatePickerComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import Modal from 'react-modal';
