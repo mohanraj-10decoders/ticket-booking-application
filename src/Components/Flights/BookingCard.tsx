@@ -63,7 +63,6 @@ export default function BookingCard() {
     travellers
   );
   const addToHistory = () => {
-    console.log('adding to history', booking);
     dispatch(
       ADDHISTORY({
         value: { ...booking, price: myPrice },
@@ -71,9 +70,7 @@ export default function BookingCard() {
     );
     handleModal();
   };
-  useEffect(() => {
-    console.log('Testing button', booking, buttonEnabled);
-  }, [booking, buttonEnabled]);
+  useEffect(() => {}, [booking, buttonEnabled]);
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = 'hidden';

@@ -28,7 +28,6 @@ export const currentBookingSlice = createSlice({
   initialState,
   reducers: {
     ADDBOOKING: (state: BookingObjectType, { payload, type }: ActionType) => {
-      console.log('action obj', type, payload);
       switch (payload.keyString) {
         case 'travelClass':
           state.travelClass = payload.value;

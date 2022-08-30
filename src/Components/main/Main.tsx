@@ -12,9 +12,6 @@ interface jsonData {
 }
 
 export default function Main() {
-  useEffect(() => {
-    console.log(products);
-  }, []);
   return (
     <div>
       <header className={classes.header}>
@@ -222,9 +219,6 @@ function Footer() {
 }
 
 function FooterList({ data }: jsonData) {
-  console.log('List data', data);
-  // let newData = [...data];
-  // console.log('List newdata', newData);
   return (
     <>
       <ul>

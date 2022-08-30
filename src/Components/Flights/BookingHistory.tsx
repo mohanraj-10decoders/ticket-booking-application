@@ -11,7 +11,6 @@ export default function BookingHistory() {
     (state: RootState) => state.BookingHistoryReducer
   );
   const dispatch = useDispatch();
-  console.log('Booking history', bookingHistory.data);
   const [modal, setModal] = useState(false);
   const [id, setId]: [number | undefined, Function] = useState();
   const handleModal = () => {

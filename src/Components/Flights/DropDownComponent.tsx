@@ -31,7 +31,6 @@ export default function SingleSelect({ keyString, data }: propType) {
         keyString: keyString,
       })
     );
-    console.log('Testing redux', booking);
   }, [selectedValue, booking, dispatch, keyString]);
   return (
     <>

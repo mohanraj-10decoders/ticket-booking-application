@@ -43,15 +43,11 @@ export const bookingHistorySlice = createSlice({
       state: BookingHistoryType,
       { payload, type }: HistoryActionType
     ) => {
-      console.log('old state', current(state));
       let newData = [
         ...state.data,
         { id: new Date().getTime(), ...payload.value },
       ];
-      //   state.data = [...state.data, payload.value];
       state.data = newData;
-      console.log('new state', current(state));
-      //   console.log('new state data', current(state.data));
     },
     DELETEHISTORYBYID: (
       state: BookingHistoryType,
