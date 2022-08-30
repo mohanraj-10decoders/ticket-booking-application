@@ -17,12 +17,11 @@ export default function BookingHistory() {
     setModal(!modal);
   };
   const handleDelete = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: number | undefined
+    _event: React.MouseEvent<HTMLButtonElement>,
+    myId: number | undefined
   ) => {
-    setId(id);
+    setId(myId);
     setModal(true);
-    // dispatch(DELETEHISTORYBYID({ id: id }));
   };
   useEffect(() => {
     if (modal) {

@@ -10,12 +10,12 @@ export type optionType = Object & {
 
 export type SelectValue = optionType | null | undefined;
 
-export type propType = {
+export type PropType = {
   keyString: string;
   data: optionType[];
 };
 
-export default function SingleSelect({ keyString, data }: propType) {
+export default function SingleSelect({ keyString, data }: PropType) {
   const [selectedValue, setSelectedValue] = useState('');
   const booking: BookingObjectType = useSelector(
     (state: BookingObjectType) => state

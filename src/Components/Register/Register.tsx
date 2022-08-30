@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import * as Yup from 'yup';
-import { regFormInputType } from '../Types';
+import { RegFormInputType } from '../Types';
 import classes from './Register.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -52,12 +52,12 @@ export default function Register() {
           }}
           validationSchema={valSchema}
           onSubmit={(
-            values: regFormInputType,
+            values: RegFormInputType,
             { setSubmitting, resetForm }
           ) => {
             let userExists = false;
             let existingUsers: string | null = localStorage.getItem('users');
-            let regUsers: regFormInputType[] = JSON.parse(`${existingUsers}`);
+            let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
             regUsers.every(function (user) {
               if (user.email === values.email) {
                 userExists = true;

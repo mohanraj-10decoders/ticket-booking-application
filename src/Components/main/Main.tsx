@@ -7,7 +7,7 @@ import payments from '../../MockData/payments.json';
 import { MockDataPath, MockDataUrl } from '../../MockDataTypes/Types';
 import classes from './Main.module.css';
 
-interface jsonData {
+interface JsonData {
   data: MockDataPath[] | MockDataUrl[];
 }
 
@@ -29,7 +29,6 @@ export default function Main() {
 
 function Header() {
   const navigate = useNavigate();
-  // const [path, setPath] = useState('');
   const logout = () => {
     localStorage.removeItem('userDetail');
     navigate('/');
@@ -218,7 +217,7 @@ function Footer() {
   );
 }
 
-function FooterList({ data }: jsonData) {
+function FooterList({ data }: JsonData) {
   return (
     <>
       <ul>

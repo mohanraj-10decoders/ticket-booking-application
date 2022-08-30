@@ -14,7 +14,7 @@ type optionType = Object & {
   label: string;
 };
 
-export interface propType {
+export interface PropType {
   options: {
     keyString: string;
     data: optionType[];
@@ -39,16 +39,20 @@ export default function BookingCard() {
         destination === 'Chennai' ||
         destination === 'Delhi' ||
         destination === 'Kolkata'
-      )
+      ) {
         setPrice((parseInt('5600') * parseInt(travellers)).toString());
-      else setPrice((parseInt('10000') * parseInt(travellers)).toString());
+      } else {
+        setPrice((parseInt('10000') * parseInt(travellers)).toString());
+      }
     } else if (
       destination === 'Chennai' ||
       destination === 'Delhi' ||
       destination === 'Kolkata'
-    )
+    ) {
       setPrice((parseInt('10000') * parseInt(travellers)).toString());
-    else setPrice((parseInt('5600') * parseInt(travellers)).toString());
+    } else {
+      setPrice((parseInt('5600') * parseInt(travellers)).toString());
+    }
     dispatch(ADDBOOKING({ value: '1000', keyString: 'price' }));
     handleModal();
   };
@@ -70,7 +74,6 @@ export default function BookingCard() {
     );
     handleModal();
   };
-  useEffect(() => {}, [booking, buttonEnabled]);
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = 'hidden';
@@ -79,7 +82,7 @@ export default function BookingCard() {
     }
   }, [modal]);
 
-  const boardingOptions: propType = {
+  const boardingOptions: PropType = {
     options: {
       keyString: 'boarding',
       data: [
@@ -92,7 +95,7 @@ export default function BookingCard() {
       ],
     },
   };
-  const destinationOptions: propType = {
+  const destinationOptions: PropType = {
     options: {
       keyString: 'destination',
       data: [
@@ -105,7 +108,7 @@ export default function BookingCard() {
       ],
     },
   };
-  const travelClassOptions: propType = {
+  const travelClassOptions: PropType = {
     options: {
       keyString: 'travelClass',
       data: [
@@ -116,7 +119,7 @@ export default function BookingCard() {
       ],
     },
   };
-  const noOfTravellersOptions: propType = {
+  const noOfTravellersOptions: PropType = {
     options: {
       keyString: 'travellers',
       data: [

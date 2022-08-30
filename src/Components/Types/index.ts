@@ -1,4 +1,4 @@
-export interface regFormInputType {
+export interface RegFormInputType {
   name: string;
   email: string;
   password: string;

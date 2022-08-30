@@ -39,7 +39,7 @@ export default function Carousel() {
         ></button>
       </div>
       <div className='carousel-inner'>
-        {CarouselData.data.map((data: CarouselBannerType, index: Number) => {
+        {CarouselData.data.map((data: CarouselBannerType, index: number) => {
           return (
             <div
               className={index === 0 ? 'carousel-item active' : 'carousel-item'}

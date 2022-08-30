@@ -6,7 +6,7 @@ interface ActionType {
 }
 
 export interface BookingObjectType {
-  id?: number | undefined;
+  id?: number;
   boarding: string | undefined;
   destination: string | undefined;
   date: string | undefined | null;
@@ -27,7 +27,7 @@ export const currentBookingSlice = createSlice({
   name: 'currentBooking',
   initialState,
   reducers: {
-    ADDBOOKING: (state: BookingObjectType, { payload, type }: ActionType) => {
+    ADDBOOKING: (state: BookingObjectType, { payload }: ActionType) => {
       switch (payload.keyString) {
         case 'travelClass':
           state.travelClass = payload.value;
@@ -49,13 +49,10 @@ export const currentBookingSlice = createSlice({
       }
       //    state = {...state}
     },
-    REMOVEBOOKING: (state: BookingObjectType, action: ActionType) => {
-      state = { ...initialState };
-    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { ADDBOOKING, REMOVEBOOKING } = currentBookingSlice.actions;
+export const { ADDBOOKING } = currentBookingSlice.actions;
 
 export default currentBookingSlice.reducer;

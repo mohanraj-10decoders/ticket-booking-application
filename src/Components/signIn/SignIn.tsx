@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import classes from './SignIn.module.css';
-import { regFormInputType } from '../Types';
+import { RegFormInputType } from '../Types';
 
 export default function SignIn() {
   const [error, setError] = useState('');
@@ -45,7 +45,7 @@ export default function SignIn() {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             let userAuth = false;
             let existingUsers: string | null = localStorage.getItem('users');
-            let regUsers: regFormInputType[] = JSON.parse(`${existingUsers}`);
+            let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
             regUsers.every(function (user) {
               if (
                 user.email === values.email &&

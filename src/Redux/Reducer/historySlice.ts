@@ -32,10 +32,7 @@ export const bookingHistorySlice = createSlice({
   name: 'bookingHistory',
   initialState: historyInitialState,
   reducers: {
-    ADDHISTORY: (
-      state: BookingHistoryType,
-      { payload, type }: HistoryActionType
-    ) => {
+    ADDHISTORY: (state: BookingHistoryType, { payload }: HistoryActionType) => {
       let newData = [
         ...state.data,
         { id: new Date().getTime(), ...payload.value },

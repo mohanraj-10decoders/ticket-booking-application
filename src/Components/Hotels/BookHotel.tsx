@@ -6,7 +6,7 @@ import { optionType, SelectValue } from '../Flights/DropDownComponent';
 import classes from './BookHotel.module.css';
 import BookingDeatil from './BookingDeatil';
 
-export interface bookingType {
+export interface BookingType {
   city: string | undefined;
   hotel: string | undefined;
   guest: string | undefined;
@@ -14,7 +14,7 @@ export interface bookingType {
   checkOut: Date | undefined;
 }
 
-export const BookingContext = createContext<bookingType>({
+export const BookingContext = createContext<BookingType>({
   city: '',
   hotel: '',
   guest: '',
@@ -30,7 +30,7 @@ export default function BookHotel() {
     checkIn: new Date(),
     checkOut: new Date(),
   };
-  const [state, setState] = useState<bookingType>(initState);
+  const [state, setState] = useState<BookingType>(initState);
   const [isConfirmed, setisConfirmed] = useState(false);
   const cityOptions: optionType[] = [
     { label: 'Hyderabad', value: 'Hyderabad' },
