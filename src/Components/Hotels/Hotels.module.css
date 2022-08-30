@@ -24,6 +24,8 @@
   top: 20vh;
   height: max-content;
   min-height: 30vh;
+  max-height: 43vh;
+  overflow-y: auto;
   width: 80vw;
   margin-left: auto;
   padding: 10px;
@@ -32,11 +34,11 @@
   -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  z-index: 6;
+  /* z-index: 6; */
 }
 .staticDisplay {
   margin: 0 auto;
-  margin-top: 15vh;
+  margin-top: 20vh;
   padding: 20px 0;
   width: 80%;
   background-color: lightgray;

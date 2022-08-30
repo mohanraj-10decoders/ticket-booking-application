@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { optionType, SelectValue } from '../Flights/DropDownComponent';
 import classes from './BookHotel.module.css';
+import BookingDeatil from './BookingDeatil';
+
+export interface bookingType {
+  city: string | undefined;
+  hotel: string | undefined;
+  guest: string | undefined;
+  checkIn: Date | undefined;
+  checkOut: Date | undefined;
+}
+
+export const BookingContext = createContext<bookingType>({
+  city: '',
+  hotel: '',
+  guest: '',
+  checkIn: new Date(),
+  checkOut: new Date(),
+});
 
 export default function BookHotel() {
-  const [state, setState] = useState<{
-    city: string | undefined;
-    hotel: string | undefined;
-    guest: string | undefined;
-    checkIn: Date | undefined;
-    checkOut: Date | undefined;
-  }>({
+  let initState = {
     city: '',
     hotel: '',
     guest: '',
     checkIn: new Date(),
     checkOut: new Date(),
-  });
+  };
+  const [state, setState] = useState<bookingType>(initState);
+  const [isConfirmed, setisConfirmed] = useState(false);
   const cityOptions: optionType[] = [
     { label: 'Hyderabad', value: 'Hyderabad' },
     { label: 'Chennai', value: 'Chennai' },
@@ -45,6 +58,10 @@ export default function BookHotel() {
   ];
   const buttonEnabled =
     state.hotel && state.guest && state.checkIn && state.checkOut && state.city;
+
+  useEffect(() => {
+    if (!buttonEnabled) setisConfirmed(false);
+  }, [buttonEnabled]);
   return (
     <>
       <div className={classes.bookingContainer}>
@@ -122,9 +139,16 @@ export default function BookHotel() {
           />
         </div>
       </div>
-      <button className={classes.confirmButton} disabled={!buttonEnabled}>
+      <button
+        className={classes.confirmButton}
+        disabled={!buttonEnabled}
+        onClick={() => setisConfirmed(true)}
+      >
         Confirm Booking
       </button>
+      <BookingContext.Provider value={state}>
+        {buttonEnabled && isConfirmed && <BookingDeatil />}
+      </BookingContext.Provider>
     </>
   );
 }
