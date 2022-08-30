@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import products from '../../MockData/products.json';
 import airlines from '../../MockData/airLines.json';

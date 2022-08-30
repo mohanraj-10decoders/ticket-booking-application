@@ -1,0 +1,27 @@
+.bookingContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.selectField > h5 {
+  text-align: left;
+}
+.selectField {
+  padding: 20px 0px;
+  width: max-content;
+  max-width: 200px;
+}
+.selectField input {
+  max-width: 100%;
+}
+.confirmButton {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #ff9d0d;
+  color: white;
+}
+.confirmButton:disabled {
+  background-color: rgba(255, 157, 13, 0.5);
+}

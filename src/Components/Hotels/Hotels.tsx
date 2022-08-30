@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from '../HomeContent/Carousel';
 import DisplayCard from '../HomeContent/DisplayCard';
+import BookHotel from './BookHotel';
 import HotelDestinations from './HotelDestinations';
 import classes from './Hotels.module.css';
 
@@ -9,7 +10,9 @@ export default function Hotels() {
     <div className={classes.container}>
       <section className={classes.content}>
         <h1>Book Domestic Hotels Online</h1>
-        <div className={classes.headCard}></div>
+        <div className={classes.headCard}>
+          <BookHotel />
+        </div>
       </section>
       <section className={classes.staticDisplay}>
         <Carousel />

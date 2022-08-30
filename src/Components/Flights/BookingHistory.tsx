@@ -94,48 +94,52 @@ export default function BookingHistory() {
         </Modal>
       )}
       <table className={classes.table}>
-        <tr>
-          <th>#</th>
-          <th>ID</th>
-          <th>Boarding</th>
-          <th>Destination</th>
-          <th>No of Travellers</th>
-          <th>Class</th>
-          <th>Date</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
-        {bookingHistory.data.map((booking, index) => {
-          let date: string | null = booking.date
-            ? new Date(Date.parse(booking.date))
-                .toString()
-                .split(' ')
-                .splice(1, 3)
-                .join(' ')
-            : null;
-          if (index !== 0)
-            return (
-              <tr key={index}>
-                <td>{index}</td>
-                <td>{booking.id}</td>
-                <td>{booking.boarding}</td>
-                <td>{booking.destination}</td>
-                <td>{booking.travellers}</td>
-                <td>{booking.travelClass}</td>
-                <td>{date}</td>
-                <td>{booking.price}</td>
-                <td>
-                  <button
-                    className={classes.deleteButton}
-                    onClick={(event) => handleDelete(event, booking.id)}
-                  >
-                    {<DeleteIcon />}
-                  </button>
-                </td>
-              </tr>
-            );
-          else return null;
-        })}
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Boarding</th>
+            <th>Destination</th>
+            <th>No of Travellers</th>
+            <th>Class</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {bookingHistory.data.map((booking, index) => {
+            let date: string | null = booking.date
+              ? new Date(Date.parse(booking.date))
+                  .toString()
+                  .split(' ')
+                  .splice(1, 3)
+                  .join(' ')
+              : null;
+            if (index !== 0)
+              return (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>{booking.id}</td>
+                  <td>{booking.boarding}</td>
+                  <td>{booking.destination}</td>
+                  <td>{booking.travellers}</td>
+                  <td>{booking.travelClass}</td>
+                  <td>{date}</td>
+                  <td>{booking.price}</td>
+                  <td>
+                    <button
+                      className={classes.deleteButton}
+                      onClick={(event) => handleDelete(event, booking.id)}
+                    >
+                      {<DeleteIcon />}
+                    </button>
+                  </td>
+                </tr>
+              );
+            else return null;
+          })}
+        </tbody>
       </table>
       {bookingHistory.data.length < 2 && (
         <div className={classes.noHistoryMsg}>No booking history available</div>

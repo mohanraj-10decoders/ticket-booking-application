@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { BookingObjectType } from '.';
 
 interface HistoryActionType {
@@ -13,13 +13,6 @@ interface DeleteHistoryType {
 interface BookingHistoryType {
   data: BookingObjectType[];
 }
-// const testObj: BookingObjectType = {
-//   boarding: 'Test',
-//   destination: 'Test',
-//   date: null,
-//   travelClass: 'Test',
-//   travellers: 'Test',
-// };
 
 const historyInitialState: BookingHistoryType = {
   data: [

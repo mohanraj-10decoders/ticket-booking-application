@@ -3,14 +3,14 @@ import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADDBOOKING, BookingObjectType } from '../../Redux/Reducer';
 
-type optionType = Object & {
+export type optionType = Object & {
   value: string;
   label: string;
 };
 
-type SelectValue = optionType | null | undefined;
+export type SelectValue = optionType | null | undefined;
 
-type propType = {
+export type propType = {
   keyString: string;
   data: optionType[];
 };

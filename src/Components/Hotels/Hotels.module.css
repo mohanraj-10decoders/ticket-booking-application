@@ -8,9 +8,10 @@
   height: 40vh;
   background-position: center;
   border-radius: 0 0 10vw 10vw;
+  padding-top: 20px;
   background-image: url('https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/6f88ed1c734a4c63b8613f3da284a423.jpg');
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .content > h1 {
@@ -20,17 +21,18 @@
 }
 .headCard {
   position: absolute;
-  bottom: -15vh;
-  height: 30vh;
+  top: 20vh;
+  height: max-content;
+  min-height: 30vh;
   width: 80vw;
+  margin-left: auto;
+  padding: 10px;
   background-color: white;
   box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  z-index: 6;
 }
 .staticDisplay {
   margin: 0 auto;
