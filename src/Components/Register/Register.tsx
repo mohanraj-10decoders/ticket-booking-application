@@ -63,14 +63,15 @@ export default function Register() {
             let userExists = false;
             let existingUsers: string | null = localStorage.getItem('users');
             let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
-            regUsers?.every(function (user) {
-              if (user.email === values.email) {
-                userExists = true;
-                setError('User already exists');
-                return false;
-              }
-              return true;
-            });
+            if (existingUsers)
+              regUsers?.every(function (user) {
+                if (user.email === values.email) {
+                  userExists = true;
+                  setError('User already exists');
+                  return false;
+                }
+                return true;
+              });
             if (!userExists) {
               let obj = { ...values };
               delete obj.confirmPassword;
