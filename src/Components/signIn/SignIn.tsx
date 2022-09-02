@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import classes from './SignIn.module.css';
 import { RegFormInputType } from '../Types';
+import customAxios from '../../Axios';
 
 export default function SignIn() {
   const [error, setError] = useState('');
@@ -43,30 +44,49 @@ export default function SignIn() {
           }}
           validationSchema={valSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            let userAuth = false;
-            let existingUsers: string | null = localStorage.getItem('users');
-            let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
-            regUsers.every(function (user) {
-              if (
-                user.email === values.email &&
-                user.password === values.password
-              ) {
-                userAuth = true;
-                localStorage.setItem(
-                  'userDetail',
-                  JSON.stringify({ name: user.name, email: user.email })
-                );
-                return false;
-              }
-              return true;
-            });
-            if (!userAuth) {
-              setError('Invalid usernme or password');
-              setSubmitting(false);
-            } else {
-              resetForm({});
-              window.location.pathname = '/dashboard/home';
-            }
+            customAxios
+              .post('/auth/login', {
+                email: values.email,
+                password: values.password,
+              })
+              .then((resp) => {
+                console.log('resp data', resp);
+                if (resp?.data?.status === 'Success') {
+                  localStorage.setItem('access_token', resp.data.token);
+                  localStorage.setItem('refresh_token', resp.data.refreshToken);
+                  resetForm({});
+                  window.location.pathname = '/dashboard/home';
+                } else {
+                  alert('Login failed');
+                  setError(resp.data.Message);
+                  setSubmitting(false);
+                }
+              })
+              .catch((err) => console.error(err.message));
+            // let userAuth = false;
+            // let existingUsers: string | null = localStorage.getItem('users');
+            // let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
+            // regUsers.every(function (user) {
+            //   if (
+            //     user.email === values.email &&
+            //     user.password === values.password
+            //   ) {
+            //     userAuth = true;
+            //     localStorage.setItem(
+            //       'userDetail',
+            //       JSON.stringify({ name: user.name, email: user.email })
+            //     );
+            //     return false;
+            //   }
+            //   return true;
+            // });
+            // if (!userAuth) {
+            //   setError('Invalid usernme or password');
+            //   setSubmitting(false);
+            // } else {
+            //   resetForm({});
+            //   window.location.pathname = '/dashboard/home';
+            // }
           }}
         >
           {(formik) => (
@@ -114,7 +134,10 @@ export default function SignIn() {
                     backgroundColor: 'gray',
                   }}
                   variant='outlined'
-                  onClick={() => formik.resetForm({})}
+                  onClick={() => {
+                    setError('');
+                    formik.resetForm({});
+                  }}
                 >
                   Cancel
                 </Button>

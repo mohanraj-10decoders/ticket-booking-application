@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { RegFormInputType } from '../Types';
 import classes from './Register.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
+import customAxios from '../../Axios';
 
 export default function Register() {
   const [error, setError] = useState('');
@@ -60,33 +61,51 @@ export default function Register() {
             values: RegFormInputType,
             { setSubmitting, resetForm }
           ) => {
-            let userExists = false;
-            let existingUsers: string | null = localStorage.getItem('users');
-            console.log('exis users', existingUsers);
-            let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
-            if (existingUsers)
-              regUsers?.every(function (user) {
-                if (user.email === values.email) {
-                  userExists = true;
-                  setError('User already exists');
-                  return false;
+            customAxios
+              .post('/auth/signup', {
+                email: values.email,
+                password: values.password,
+              })
+              .then((resp) => {
+                if (resp.status === 201) {
+                  alert('User registered successfully!!');
+                  resetForm({});
+                  setSubmitting(true);
+                  navigate('/signIn');
+                } else if (resp.data.Message === 'User already exists') {
+                  alert('User already exists!');
+                } else {
+                  alert('Failed to register user');
                 }
-                return true;
-              });
-            if (!userExists) {
-              let obj = { ...values };
-              delete obj.confirmPassword;
-              localStorage.setItem(
-                'users',
-                JSON.stringify([...regUsers, { ...obj }])
-              );
-              setTimeout(() => {
-                alert('User Registered Successfully!!');
-                resetForm({});
-                navigate('/signIn');
-                setSubmitting(true);
-              }, 400);
-            }
+              })
+              .catch((err) => console.error(err.message));
+            // let userExists = false;
+            // let existingUsers: string | null = localStorage.getItem('users');
+            // console.log('exis users', existingUsers);
+            // let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
+            // if (existingUsers)
+            //   regUsers?.every(function (user) {
+            //     if (user.email === values.email) {
+            //       userExists = true;
+            //       setError('User already exists');
+            //       return false;
+            //     }
+            //     return true;
+            //   });
+            // if (!userExists) {
+            //   let obj = { ...values };
+            //   delete obj.confirmPassword;
+            //   localStorage.setItem(
+            //     'users',
+            //     JSON.stringify([...regUsers, { ...obj }])
+            //   );
+            //   setTimeout(() => {
+            //     alert('User Registered Successfully!!');
+            //     resetForm({});
+            //     navigate('/signIn');
+            //     setSubmitting(true);
+            //   }, 400);
+            // }
           }}
         >
           {(formik) => (
