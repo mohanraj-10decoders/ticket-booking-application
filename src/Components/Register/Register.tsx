@@ -19,7 +19,12 @@ export default function Register() {
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string().required('Required'),
+    password: Yup.string()
+      .required('Required')
+      .matches(
+        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        'Password must contain at least 8 characters, one uppercase, one number and one special case character'
+      ),
     confirmPassword: Yup.string()
       .required('Required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match'),
@@ -58,7 +63,7 @@ export default function Register() {
             let userExists = false;
             let existingUsers: string | null = localStorage.getItem('users');
             let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
-            regUsers.every(function (user) {
+            regUsers?.every(function (user) {
               if (user.email === values.email) {
                 userExists = true;
                 setError('User already exists');

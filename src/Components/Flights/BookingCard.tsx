@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
 import DatePickerComponent from './DatePickerComponent';
@@ -29,7 +29,12 @@ export default function BookingCard() {
     (state: RootState) => state.CurrentBookingReducer
   );
   let { boarding, destination, date, travelClass, travellers = '' } = booking;
-  const calculatePrice = () => {
+  const handleModal = useCallback(() => {
+    setModal(!modal);
+  }, [modal]);
+  const calculatePrice = useCallback(() => {
+    console.log('calculating price');
+
     if (
       boarding === 'Chennai' ||
       boarding === 'Delhi' ||
@@ -55,10 +60,7 @@ export default function BookingCard() {
     }
     dispatch(ADDBOOKING({ value: '1000', keyString: 'price' }));
     handleModal();
-  };
-  const handleModal = () => {
-    setModal(!modal);
-  };
+  }, [boarding, destination, travellers, dispatch, handleModal]);
   let buttonEnabled: boolean = !!(
     boarding &&
     destination &&
