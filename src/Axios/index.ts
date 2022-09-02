@@ -38,8 +38,6 @@ function createAxiosResponseInterceptor() {
             },
           })
           .then((response) => {
-            console.log('ref res', response);
-            console.log('changing token', response.data);
             localStorage.setItem('access_token', response.data.data.token);
             localStorage.setItem(
               'refresh_token',
@@ -50,11 +48,9 @@ function createAxiosResponseInterceptor() {
             return axios(error.response.config);
           })
           .catch((error) => {
-            console.log('ref error', error);
             if (error.response.data.status === 'Refresh token expired') {
               localStorage.clear();
-              console.log('ref token expired');
-              window.location.pathname = '/login';
+              window.location.pathname = '/signIn';
               return error.response.data;
             }
 

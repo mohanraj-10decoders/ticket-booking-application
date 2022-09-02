@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import FlightsData from '../../MockData/flightsCard.json';
+import customAxios from '../../Axios';
 import TravelBlogsData from '../../MockData/travelBlogsCard.json';
 import {
   FlightsCardType,
@@ -42,6 +42,15 @@ export default function MainCard() {
 }
 
 export function FlightsCard() {
+  const [FlightsData, setFlightsData] = useState({ data: [] });
+
+  useEffect(() => {
+    customAxios
+      .get('auth/getData')
+      .then((resp) => setFlightsData(resp.data.data))
+      .catch((err) => console.log(err.message));
+  }, []);
+
   return (
     <div className={classes.flightsCards}>
       <h3>Best Flight Deals</h3>
@@ -78,13 +87,6 @@ function HotelsCard() {
                 alt='BlogImage'
               />
               <p>{data.title}</p>
-              {/* <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>
-              <div className={classes.cities}>
-                <p className={classes.cardFrom}>{data.from}</p>
-                <p className={classes.cardTo}>{data.to}</p>
-              </div>
-              <p className={classes.cardDate}>Starting from</p>
-              <h3 className={classes.cardPrice}>{data.price}</h3> */}
             </div>
           );
         })}
