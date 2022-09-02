@@ -62,6 +62,7 @@ export default function Register() {
           ) => {
             let userExists = false;
             let existingUsers: string | null = localStorage.getItem('users');
+            console.log('exis users', existingUsers);
             let regUsers: RegFormInputType[] = JSON.parse(`${existingUsers}`);
             if (existingUsers)
               regUsers?.every(function (user) {
