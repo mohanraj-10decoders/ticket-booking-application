@@ -21,16 +21,22 @@ createAxiosResponseInterceptor();
 
 function createAxiosResponseInterceptor() {
   customAxios.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      console.log('int resp', response);
+
+      //   if (response?.data?.error && response.data.message === 'No token Found') {
+      //     localStorage.clear();
+      //     window.location.pathname = '/signIn';
+      //     return { error: true, message: 'No Token Found' };
+      //   }
+      return response;
+    },
     (error) => {
       if (
         error.response.data.message ===
         'Unauthorized! Access Token was expired!'
       ) {
-        console.log('test');
-
         customAxios.interceptors.response.eject(reqInterceptor);
-
         return axios
           .post('http://localhost:5000/auth/refresh', undefined, {
             headers: {
@@ -49,6 +55,7 @@ function createAxiosResponseInterceptor() {
           })
           .catch((error) => {
             if (error.response.data.status === 'Refresh token expired') {
+              alert('Your session expired. Please Login again to continue.');
               localStorage.clear();
               window.location.pathname = '/signIn';
               return error.response.data;

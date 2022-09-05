@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { Formik } from 'formik';
 import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import classes from './SignIn.module.css';
 import { RegFormInputType } from '../Types';
@@ -11,6 +11,7 @@ import customAxios from '../../Axios';
 
 export default function SignIn() {
   const [error, setError] = useState('');
+  const navigate = useNavigate();
   const inputStyles = {
     height: '50px',
   };
@@ -55,10 +56,11 @@ export default function SignIn() {
                   localStorage.setItem('access_token', resp.data.token);
                   localStorage.setItem('refresh_token', resp.data.refreshToken);
                   resetForm({});
-                  window.location.pathname = '/dashboard/home';
+                  navigate('/dashboard/home');
+                  // window.location.pathname = '/dashboard/home';
                 } else {
                   alert('Login failed');
-                  setError(resp.data.Message);
+                  setError(resp?.data?.Message);
                   setSubmitting(false);
                 }
               })
@@ -90,7 +92,7 @@ export default function SignIn() {
           }}
         >
           {(formik) => (
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} data-testid='signin-form'>
               <div className={classes.input}>
                 <TextField
                   InputProps={{
@@ -122,7 +124,7 @@ export default function SignIn() {
                   <div className={classes.error}>{formik.errors.password}</div>
                 ) : null}
               </div>
-              {!!error.length && <p className={classes.errorMsg}>{error}</p>}
+              {!!error?.length && <p className={classes.errorMsg}>{error}</p>}
               <section className={classes.buttons}>
                 <Button variant='contained' color='success' type='submit'>
                   Sign In

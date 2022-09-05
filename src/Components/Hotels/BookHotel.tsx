@@ -143,6 +143,7 @@ export default function BookHotel() {
         className={classes.confirmButton}
         disabled={!buttonEnabled}
         onClick={() => setisConfirmed(true)}
+        data-testid='confirmButton'
       >
         Confirm Booking
       </button>

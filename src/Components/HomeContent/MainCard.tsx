@@ -9,7 +9,7 @@ import {
 import classes from './MainCard.module.css';
 
 export default function MainCard() {
-  const [selected, setSelected] = useState('Flights');
+  const [selected, setSelected] = useState('Hotels');
   return (
     <div className={classes.content}>
       <Button
@@ -55,7 +55,7 @@ export function FlightsCard() {
     <div className={classes.flightsCards}>
       <h3>Best Flight Deals</h3>
       <section className={classes.flightCards}>
-        {FlightsData.data.map((data: FlightsCardType) => {
+        {FlightsData?.data.map((data: FlightsCardType) => {
           return (
             <div className={classes.flightCard} key={data.id}>
               <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>

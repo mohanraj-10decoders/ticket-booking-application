@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface ActionType {
   payload: { value: string | undefined; keyString: string };
@@ -22,6 +22,10 @@ const initialState: BookingObjectType = {
   travellers: '',
   price: '',
 };
+
+const testLog = createAsyncThunk('', () => {
+  console.log('Thunk');
+});
 
 export const currentBookingSlice = createSlice({
   name: 'currentBooking',
