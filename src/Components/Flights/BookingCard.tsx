@@ -195,6 +195,8 @@ export default function BookingCard() {
             borderRadius: '10px',
             outline: 'none',
             padding: '20px 100px',
+            overflowY: 'auto',
+            overflowX: 'auto',
           },
         }}
       >
