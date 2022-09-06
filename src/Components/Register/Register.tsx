@@ -17,11 +17,30 @@ export default function Register() {
   const inputStyles = {
     height: '40px',
   };
-  const notify = (message: String) =>
-    toast.success(message, {
-      position: toast.POSITION.TOP_RIGHT,
-      className: 'toastMessage',
-    });
+  const notify = (message: String, type: String) => {
+    switch (type) {
+      case 'success':
+        toast.success(message, {
+          position: toast.POSITION.TOP_RIGHT,
+          className: 'toastMessage',
+        });
+        break;
+      case 'warning':
+        toast.warning(message, {
+          position: toast.POSITION.TOP_RIGHT,
+          className: 'toastMessage',
+        });
+        break;
+      case 'error':
+        toast.error(message, {
+          position: toast.POSITION.TOP_RIGHT,
+          className: 'toastMessage',
+        });
+        break;
+      default:
+        break;
+    }
+  };
   const valSchema = Yup.object({
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
@@ -77,16 +96,17 @@ export default function Register() {
                 if (resp.status === 201 && resp.data.status === 'Success') {
                   // alert('User registered successfully!!');
                   notify(
-                    `User Registered successfully!!\nPlease Sign In to continue`
+                    `User Registered successfully!!\nPlease Sign In to continue`,
+                    'success'
                   );
                   resetForm({});
                   setSubmitting(true);
                   // navigate('/signIn');
                   setTimeout(() => navigate('/signIn'), 2500);
                 } else if (resp?.data?.Message === 'User Already Exists') {
-                  notify(`User allready exists`);
+                  notify(`User allready exists`, 'warning');
                 } else {
-                  notify(`Failed to register user`);
+                  notify(`Failed to register user`, 'error');
                 }
               })
               .catch((err) => console.error(err.message));
