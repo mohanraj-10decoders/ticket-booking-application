@@ -55,7 +55,7 @@ function createAxiosResponseInterceptor() {
           })
           .catch((error) => {
             if (error.response.data.status === 'Refresh token expired') {
-              alert('Your session expired. Please Login again to continue.');
+              alert(`Your session expired\nPlease Login again to continue.`);
               localStorage.clear();
               window.location.pathname = '/signIn';
               return error.response.data;

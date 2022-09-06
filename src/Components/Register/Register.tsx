@@ -74,7 +74,7 @@ export default function Register() {
                 password: values.password,
               })
               .then((resp) => {
-                if (resp.status === 201) {
+                if (resp.status === 201 && resp.data.status === 'Success') {
                   // alert('User registered successfully!!');
                   notify(
                     `User Registered successfully!!\nPlease Sign In to continue`
@@ -83,10 +83,10 @@ export default function Register() {
                   setSubmitting(true);
                   // navigate('/signIn');
                   setTimeout(() => navigate('/signIn'), 2500);
-                } else if (resp.data.Message === 'User already exists') {
-                  alert('User already exists!');
+                } else if (resp?.data?.Message === 'User Already Exists') {
+                  notify(`User allready exists`);
                 } else {
-                  alert('Failed to register user');
+                  notify(`Failed to register user`);
                 }
               })
               .catch((err) => console.error(err.message));
@@ -218,7 +218,7 @@ export default function Register() {
         <ToastContainer
           position='top-right'
           hideProgressBar={false}
-          autoClose={false}
+          autoClose={5000}
           newestOnTop={true}
           closeOnClick={false}
           draggable={false}
