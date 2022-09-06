@@ -8,6 +8,8 @@ import { RegFormInputType } from '../Types';
 import classes from './Register.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import customAxios from '../../Axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
   const [error, setError] = useState('');
@@ -15,6 +17,11 @@ export default function Register() {
   const inputStyles = {
     height: '40px',
   };
+  const notify = (message: String) =>
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toastMessage',
+    });
   const valSchema = Yup.object({
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
@@ -68,10 +75,14 @@ export default function Register() {
               })
               .then((resp) => {
                 if (resp.status === 201) {
-                  alert('User registered successfully!!');
+                  // alert('User registered successfully!!');
+                  notify(
+                    `User Registered successfully!!\nPlease Sign In to continue`
+                  );
                   resetForm({});
                   setSubmitting(true);
-                  navigate('/signIn');
+                  // navigate('/signIn');
+                  setTimeout(() => navigate('/signIn'), 2500);
                 } else if (resp.data.Message === 'User already exists') {
                   alert('User already exists!');
                 } else {
@@ -204,6 +215,15 @@ export default function Register() {
         <footer>
           Already registered? SignIn <NavLink to='/signIn'>here</NavLink>
         </footer>
+        <ToastContainer
+          position='top-right'
+          hideProgressBar={false}
+          autoClose={false}
+          newestOnTop={true}
+          closeOnClick={false}
+          draggable={false}
+          rtl={false}
+        />
       </section>
     </div>
   );
