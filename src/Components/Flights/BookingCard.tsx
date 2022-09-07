@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classes from './BookingCard.module.css';
 import SingleSelect from './DropDownComponent';
 import DatePickerComponent from './DatePickerComponent';
@@ -23,7 +23,7 @@ export interface PropType {
 
 export default function BookingCard() {
   const [modal, setModal] = useState(false);
-  const [myPrice, setPrice] = useState('1000');
+  const priceRef = useRef('1000');
   const dispatch = useDispatch();
   const booking = useSelector(
     (state: RootState) => state.CurrentBookingReducer
@@ -45,18 +45,20 @@ export default function BookingCard() {
         destination === 'Delhi' ||
         destination === 'Kolkata'
       ) {
-        setPrice((parseInt('5600') * parseInt(travellers)).toString());
+        priceRef.current = (parseInt('5600') * parseInt(travellers)).toString();
       } else {
-        setPrice((parseInt('10000') * parseInt(travellers)).toString());
+        priceRef.current = (
+          parseInt('10000') * parseInt(travellers)
+        ).toString();
       }
     } else if (
       destination === 'Chennai' ||
       destination === 'Delhi' ||
       destination === 'Kolkata'
     ) {
-      setPrice((parseInt('10000') * parseInt(travellers)).toString());
+      priceRef.current = (parseInt('10000') * parseInt(travellers)).toString();
     } else {
-      setPrice((parseInt('5600') * parseInt(travellers)).toString());
+      priceRef.current = (parseInt('5600') * parseInt(travellers)).toString();
     }
     dispatch(ADDBOOKING({ value: '1000', keyString: 'price' }));
     handleModal();
@@ -71,7 +73,7 @@ export default function BookingCard() {
   const addToHistory = () => {
     dispatch(
       ADDHISTORY({
-        value: { ...booking, price: myPrice },
+        value: { ...booking, price: priceRef.current },
       })
     );
     handleModal();
@@ -202,7 +204,7 @@ export default function BookingCard() {
       >
         {/* <button onClick={handleModal}>x</button> */}
         <h4 className={classes.modalTitle}>Your booking details</h4>
-        <ConfirmBooking {...{ price: myPrice }} />
+        <ConfirmBooking {...{ price: priceRef.current }} />
         <div className={classes.buttons}>
           <button onClick={addToHistory} className={classes.bookingButton}>
             Confirm
