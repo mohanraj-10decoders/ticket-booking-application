@@ -6,6 +6,7 @@ import corporates from '../../MockData/corporates.json';
 import payments from '../../MockData/payments.json';
 import { MockDataPath, MockDataUrl } from '../../MockDataTypes/Types';
 import classes from './Main.module.css';
+import { Col, Container, Row } from 'react-bootstrap';
 
 interface JsonData {
   data: MockDataPath[] | MockDataUrl[];
@@ -64,7 +65,6 @@ function Header() {
           <div
             className='collapse navbar-collapse'
             id='navbarCollapse1'
-            // style={{ display: 'flex', justifyContent: 'flex-end', gap: '30px' }}
             style={{ justifyContent: 'flex-end' }}
           >
             <div
@@ -105,26 +105,6 @@ function Header() {
                   Hotels
                 </NavLink>
               </div>
-              {/* <div className='nav-item nav-link'>
-                <NavLink
-                  to='/dashboard/offers'
-                  className={({ isActive }) =>
-                    isActive ? classes.activeNavLink : classes.navLink
-                  }
-                >
-                  Offers
-                </NavLink>
-              </div>
-              <div className='nav-item nav-link'>
-                <NavLink
-                  to='/dashboard/contact'
-                  className={({ isActive }) =>
-                    isActive ? classes.activeNavLink : classes.navLink
-                  }
-                >
-                  Contact
-                </NavLink>
-              </div> */}
               <div className='dropdown' style={{ width: '150px' }}>
                 <button
                   type='button'
@@ -172,11 +152,6 @@ function Header() {
                   </li>
                 </ul>
               </div>
-              {/* <div>
-                <button className='btn btn-light' onClick={logout}>
-                  LogOut
-                </button>
-              </div> */}
             </div>
           </div>
         </div>
@@ -188,24 +163,26 @@ function Header() {
 function Footer() {
   return (
     <>
-      <section>
-        <div>
-          <h6 style={{ width: 'max-content' }}>OUR PRODUCTS</h6>
-          <FooterList {...products} />
-        </div>
-        <div>
-          <h6 style={{ width: 'max-content' }}>CORPORATE</h6>
-          <FooterList {...corporates} />
-        </div>
-        <div>
-          <h6 style={{ width: 'max-content' }}>AirLines</h6>
-          <FooterList {...airlines} />
-        </div>
-        <div>
-          <h6 style={{ width: 'max-content' }}>Payments</h6>
-          <FooterList {...payments} />
-        </div>
-      </section>
+      <Container fluid>
+        <Row className={classes.section}>
+          <Col>
+            <h6 style={{ width: 'max-content' }}>OUR PRODUCTS</h6>
+            <FooterList {...products} />
+          </Col>
+          <Col>
+            <h6 style={{ width: 'max-content' }}>CORPORATE</h6>
+            <FooterList {...corporates} />
+          </Col>
+          <Col>
+            <h6 style={{ width: 'max-content' }}>AirLines</h6>
+            <FooterList {...airlines} />
+          </Col>
+          <Col>
+            <h6 style={{ width: 'max-content' }}>Payments</h6>
+            <FooterList {...payments} />
+          </Col>
+        </Row>
+      </Container>
       <div className={classes.copyRight}>
         <p>Copyright © 2016-2022 Happyeasygo Group. All rights reserved</p>
         <p>

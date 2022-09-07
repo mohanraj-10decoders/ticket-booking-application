@@ -27,19 +27,14 @@
   background-color: rgba(200, 200, 200, 0.5);
 }
 
-.flightCards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .flightCard {
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 5px 17px 0px rgba(0, 0, 0, 0.3);
   padding: 10px 20px;
+  margin: 10px;
+  min-width: 100px;
 }
 
 .flightCard p {
@@ -60,6 +55,7 @@
   font-size: 0.9rem;
   color: gray;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .cardPrice {

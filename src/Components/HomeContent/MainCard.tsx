@@ -6,6 +6,7 @@ import {
   FlightsCardType,
   TravelBlogsCardType,
 } from '../../MockDataTypes/Types';
+import { Row, Col, Container } from 'react-bootstrap';
 import classes from './MainCard.module.css';
 
 export default function MainCard() {
@@ -54,7 +55,30 @@ export function FlightsCard() {
   return (
     <div className={classes.flightsCards}>
       <h3>Best Flight Deals</h3>
-      <section className={classes.flightCards}>
+      <Container>
+        <Row className={classes.flightCards}>
+          {FlightsData?.data.map((data: FlightsCardType) => {
+            return (
+              <Col
+                key={data.id}
+                className={classes.flightCard}
+                style={{ minWidth: '150px' }}
+              >
+                <p
+                  className={classes.cardDate}
+                >{`${data.day}, ${data.date}`}</p>
+                <div className={classes.cities}>
+                  <p className={classes.cardFrom}>{data.from}</p>
+                  <p className={classes.cardTo}>{data.to}</p>
+                </div>
+                <p className={classes.cardDate}>Starting from</p>
+                <h3 className={classes.cardPrice}>{data.price}</h3>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+      {/* <section className={classes.flightCards}>
         {FlightsData?.data.map((data: FlightsCardType) => {
           return (
             <div className={classes.flightCard} key={data.id}>
@@ -68,7 +92,7 @@ export function FlightsCard() {
             </div>
           );
         })}
-      </section>
+      </section> */}
     </div>
   );
 }

@@ -2,7 +2,6 @@
   position: sticky;
   top: 0px;
   width: 100%;
-  /* height: max-content; */
   background-color: #017959;
   z-index: 5;
 }
@@ -49,12 +48,9 @@ li {
 h6 {
   padding-left: 15px;
 }
-.footer section {
+.footer .section {
   background-color: #353535;
   color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   padding: 20px 30px;
 }
 .copyRight {
