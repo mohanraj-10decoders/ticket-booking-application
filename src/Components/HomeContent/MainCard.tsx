@@ -78,21 +78,6 @@ export function FlightsCard() {
           })}
         </Row>
       </Container>
-      {/* <section className={classes.flightCards}>
-        {FlightsData?.data.map((data: FlightsCardType) => {
-          return (
-            <div className={classes.flightCard} key={data.id}>
-              <p className={classes.cardDate}>{`${data.day}, ${data.date}`}</p>
-              <div className={classes.cities}>
-                <p className={classes.cardFrom}>{data.from}</p>
-                <p className={classes.cardTo}>{data.to}</p>
-              </div>
-              <p className={classes.cardDate}>Starting from</p>
-              <h3 className={classes.cardPrice}>{data.price}</h3>
-            </div>
-          );
-        })}
-      </section> */}
     </div>
   );
 }
